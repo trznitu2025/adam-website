@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADAM - Dein KI-Projektassistent | Automatisiert. Intelligent. 24/7.</title>
+    <meta name="description" content="ADAM ist dein persönlicher KI-Assistent für Aufmaß, Projektmanagement, Dokumentation und Automatisierung. Spare Zeit und steigere deine Produktivität.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🤖</span>
+                <span class="logo-text">ADAM</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#usecases">Anwendungen</a></li>
+                <li><a href="#pricing">Preise</a></li>
+                <li><a href="#contact" class="btn btn-primary">Kontakt</a></li>
+            </ul>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 Jetzt verfügbar</div>
+                <h1>Dein persönlicher <span class="gradient-text">KI-Assistent</span> für maximale Produktivität</h1>
+                <p class="hero-subtitle">ADAM automatisiert deine Routineaufgaben, erstellt Aufmaße aus Plänen, verwaltet E-Mails und Termine — rund um die Uhr, 7 Tage die Woche.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary btn-large">Kostenlos testen</a>
+                    <a href="#demo" class="btn btn-secondary btn-large">Demo ansehen</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">80%</span>
+                        <span class="stat-label">Zeitersparnis</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Verfügbar</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Automatisierungen</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="chat-window">
+                    <div class="chat-header">
+                        <span class="chat-status"></span>
+                        <span>ADAM ist online</span>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message user">Erstelle ein Aufmaß für Projekt Düsseldorf</div>
+                        <div class="message bot">
+                            <span class="typing-indicator">
+                                <span></span><span></span><span></span>
+                            </span>
+                            <span class="message-text">Aufmaß wird erstellt... ✅ Fertig! 47 Positionen, 3 Etagen. Excel exportiert.</span>
+                        </div>
+                        <div class="message user">Schicke die Rechnung an Müller GmbH</div>
+                        <div class="message bot">
+                            <span class="message-text">📧 E-Mail-Entwurf erstellt. Rechnung #2024-047 angehängt. Soll ich absenden?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By -->
+    <section class="trusted">
+        <div class="container">
+            <p class="trusted-label">Vertraut von Profis aus</p>
+            <div class="trusted-logos">
+                <span>🏗️ Bauwesen</span>
+                <span>📊 Projektmanagement</span>
+                <span>💼 Handwerk</span>
+                <span>🏢 KMU</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Was ADAM für dich tun kann</h2>
+                <p>Automatisiere repetitive Aufgaben und fokussiere dich auf das Wesentliche</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3>Aufmaß & Mengenermittlung</h3>
+                    <p>Automatische Mengenermittlung aus Plänen und LV. GAEB-Import, Excel-Export, VOB-konform.</p>
+                    <ul class="feature-list">
+                        <li>PDF-Pläne analysieren</li>
+                        <li>Positionen zuordnen</li>
+                        <li>Etagen-weise Gliederung</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>E-Mail & Kalender</h3>
+                    <p>Intelligente E-Mail-Verwaltung, automatische Terminplanung und Erinnerungen.</p>
+                    <ul class="feature-list">
+                        <li>E-Mails zusammenfassen</li>
+                        <li>Termine koordinieren</li>
+                        <li>Automatische Follow-ups</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Dokumentation</h3>
+                    <p>PDFs lesen, zusammenfassen und durchsuchen. OCR für Scans und Fotos.</p>
+                    <ul class="feature-list">
+                        <li>PDF-Analyse & OCR</li>
+                        <li>Verträge prüfen</li>
+                        <li>Berichte erstellen</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Buchhaltung</h3>
+                    <p>Lexoffice-Integration für Angebote, Rechnungen und Finanzübersichten.</p>
+                    <ul class="feature-list">
+                        <li>Angebote erstellen</li>
+                        <li>Rechnungen schreiben</li>
+                        <li>Zahlungen tracken</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Deep Research</h3>
+                    <p>Tiefgehende Recherchen mit Quellenangaben. Web-Suche und Analyse.</p>
+                    <ul class="feature-list">
+                        <li>Marktanalysen</li>
+                        <li>Wettbewerber-Research</li>
+                        <li>Technische Recherche</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Automatisierungen</h3>
+                    <p>Workflows automatisieren mit n8n, Cron-Jobs und intelligenten Triggern.</p>
+                    <ul class="feature-list">
+                        <li>Workflow-Builder</li>
+                        <li>Scheduled Tasks</li>
+                        <li>API-Integrationen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2>So einfach funktioniert's</h2>
+                <p>In 3 Schritten zu deinem persönlichen KI-Assistenten</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Verbinden</h3>
+                    <p>Verbinde ADAM mit WhatsApp, Telegram oder E-Mail — wo du willst.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Konfigurieren</h3>
+                    <p>Wir richten ADAM für deine Bedürfnisse ein — Skills, Integrationen, Workflows.</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Loslegen</h3>
+                    <p>Schreibe ADAM wie einem Kollegen — er erledigt den Rest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="usecases" id="usecases">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perfekt für</h2>
+                <p>ADAM passt sich deiner Branche und deinen Aufgaben an</p>
+            </div>
+            <div class="usecases-grid">
+                <div class="usecase-card">
+                    <div class="usecase-icon">🏗️</div>
+                    <h3>Bauwesen & Handwerk</h3>
+                    <p>Aufmaße, LV-Prüfung, Nachtragsmanagement, Baudokumentation</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon">📋</div>
+                    <h3>Projektleiter</h3>
+                    <p>Terminkoordination, Statusberichte, Dokumentenverwaltung</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon">💼</div>
+                    <h3>Kleine Unternehmen</h3>
+                    <p>Buchhaltung, Kundenkommunikation, Angebote & Rechnungen</p>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-icon">👨‍💻</div>
+                    <h3>Busy Professionals</h3>
+                    <p>E-Mail-Management, Recherche, Terminplanung, Erinnerungen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">ADAM spart mir jeden Tag 2-3 Stunden. Aufmaße, die früher einen halben Tag gedauert haben, sind in 30 Minuten fertig. Absolute Empfehlung!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👷</div>
+                    <div class="author-info">
+                        <span class="author-name">Projektleiter</span>
+                        <span class="author-title">Trockenbau-Unternehmen, Düsseldorf</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transparente Preise</h2>
+                <p>Wähle das Paket, das zu dir passt</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <div class="price">
+                            <span class="price-amount">99€</span>
+                            <span class="price-period">/Monat</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ WhatsApp oder Telegram</li>
+                        <li>✓ E-Mail-Management</li>
+                        <li>✓ Basis-Recherche</li>
+                        <li>✓ 100 Anfragen/Monat</li>
+                        <li>✓ E-Mail Support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Anfragen</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Beliebt</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="price">
+                            <span class="price-amount">249€</span>
+                            <span class="price-period">/Monat</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Alle Kanäle (WhatsApp, Telegram, E-Mail)</li>
+                        <li>✓ Aufmaß & Mengenermittlung</li>
+                        <li>✓ Lexoffice-Integration</li>
+                        <li>✓ Unbegrenzte Anfragen</li>
+                        <li>✓ Prioritäts-Support</li>
+                        <li>✓ Custom Skills</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Jetzt starten</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <span class="price-amount">Individuell</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Alles aus Professional</li>
+                        <li>✓ Eigene Server-Instanz</li>
+                        <li>✓ API-Zugang</li>
+                        <li>✓ Individuelle Integrationen</li>
+                        <li>✓ Dedicated Support</li>
+                        <li>✓ SLA-Garantie</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Häufige Fragen</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Wie sicher sind meine Daten?</h3>
+                    <p>Deine Daten werden verschlüsselt übertragen und gespeichert. ADAM läuft auf deutschen Servern und ist DSGVO-konform.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Brauche ich technisches Wissen?</h3>
+                    <p>Nein! Du kommunizierst mit ADAM wie mit einem Kollegen per Chat. Keine Programmierung nötig.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Kann ich ADAM testen?</h3>
+                    <p>Ja! Wir bieten eine kostenlose Demo an, in der du ADAM live erleben kannst.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Welche Integrationen gibt es?</h3>
+                    <p>Lexoffice, Google Workspace, n8n, und viele mehr. Wir erweitern ständig.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Bereit, Zeit zu sparen?</h2>
+                <p>Starte jetzt mit deinem persönlichen KI-Assistenten</p>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Dein Name" required>
+                        <input type="email" name="email" placeholder="Deine E-Mail" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" name="phone" placeholder="Telefon (optional)">
+                        <select name="interest">
+                            <option value="">Interesse an...</option>
+                            <option value="starter">Starter Paket</option>
+                            <option value="professional">Professional Paket</option>
+                            <option value="enterprise">Enterprise Lösung</option>
+                            <option value="demo">Erstmal Demo</option>
+                        </select>
+                    </div>
+                    <textarea name="message" placeholder="Erzähl uns von deinen Anforderungen..." rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary btn-large">Anfrage senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🤖</span>
+                        <span class="logo-text">ADAM</span>
+                    </div>
+                    <p>Adrian's Digital Assistant Manager<br>Dein KI-Assistent für maximale Produktivität.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Preise</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <p>📧 a.d.a.m@agentmail.to</p>
+                    <p>📱 +49 211 88 233 529</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ADAM. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
