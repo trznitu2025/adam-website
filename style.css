@@ -303,6 +303,10 @@ h3 { font-size: 1.5rem; }
     border-bottom-left-radius: 4px;
 }
 
+.chat-messages {
+    min-height: 280px;
+}
+
 .typing-indicator {
     display: inline-flex;
     gap: 4px;

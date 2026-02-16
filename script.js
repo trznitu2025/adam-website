@@ -59,29 +59,89 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 
-    // Chat window animation
-    const chatMessages = document.querySelectorAll('.chat-messages .message');
-    chatMessages.forEach((msg, index) => {
-        msg.style.opacity = '0';
-        setTimeout(() => {
-            msg.style.opacity = '1';
-        }, 500 + (index * 800));
-    });
-
-    // Typing animation for bot messages
-    const botMessages = document.querySelectorAll('.message.bot');
-    botMessages.forEach((msg, index) => {
-        const typingIndicator = msg.querySelector('.typing-indicator');
-        const messageText = msg.querySelector('.message-text');
+    // Typewriter effect function
+    function typeWriter(element, text, speed = 30, callback) {
+        let i = 0;
+        element.textContent = '';
+        element.style.visibility = 'visible';
         
-        if (typingIndicator && messageText) {
-            messageText.style.display = 'none';
-            setTimeout(() => {
-                typingIndicator.style.display = 'none';
-                messageText.style.display = 'inline';
-            }, 1500 + (index * 2000));
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else if (callback) {
+                callback();
+            }
         }
-    });
+        type();
+    }
+
+    // Chat animation sequence
+    function animateChat() {
+        const chatWindow = document.querySelector('.chat-window');
+        if (!chatWindow) return;
+
+        const messages = [
+            { type: 'user', text: 'Erstelle ein Aufmaß für Projekt Düsseldorf', delay: 1000 },
+            { type: 'bot', text: 'Aufmaß wird erstellt... ✅ Fertig! 47 Positionen, 3 Etagen. Excel exportiert.', delay: 2000, typing: true },
+            { type: 'user', text: 'Schicke die Rechnung an Müller GmbH', delay: 1500 },
+            { type: 'bot', text: '📧 E-Mail-Entwurf erstellt. Rechnung #2024-047 angehängt. Soll ich absenden?', delay: 2000, typing: true }
+        ];
+
+        const chatMessagesContainer = chatWindow.querySelector('.chat-messages');
+        chatMessagesContainer.innerHTML = '';
+
+        let totalDelay = 500;
+
+        messages.forEach((msg, index) => {
+            setTimeout(() => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${msg.type}`;
+                chatMessagesContainer.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
+                if (msg.type === 'bot' && msg.typing) {
+                    // Show typing indicator first
+                    messageDiv.innerHTML = '<span class="typing-indicator"><span></span><span></span><span></span></span>';
+                    
+                    setTimeout(() => {
+                        messageDiv.innerHTML = '';
+                        const textSpan = document.createElement('span');
+                        textSpan.className = 'message-text';
+                        messageDiv.appendChild(textSpan);
+                        typeWriter(textSpan, msg.text, 25);
+                    }, 1200);
+                } else {
+                    typeWriter(messageDiv, msg.text, 20);
+                }
+            }, totalDelay);
+
+            totalDelay += msg.delay + (msg.type === 'bot' ? 1500 : 800);
+        });
+
+        // Restart animation after it completes
+        setTimeout(() => {
+            animateChat();
+        }, totalDelay + 5000);
+    }
+
+    // Start chat animation when hero is visible
+    const chatObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(animateChat, 1000);
+                chatObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const chatWindow = document.querySelector('.chat-window');
+    if (chatWindow) {
+        chatObserver.observe(chatWindow);
+    }
 
     // Counter animation for stats
     function animateCounter(element, target, duration = 2000) {
