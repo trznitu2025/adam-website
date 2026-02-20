@@ -4,415 +4,557 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ADAM — KI-Assistent der nächsten Generation</title>
-  <meta name="description" content="ADAM ist dein persönlicher KI-Assistent für maximale Produktivität. Aufmaß, E-Mail, Buchhaltung, Deep Research — alles automatisiert." />
+  <meta name="description" content="ADAM ist Ihr persönlicher KI-Assistent auf WhatsApp. 24/7 verfügbar, automatisiert, intelligent. Ab 650€/Monat." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Scroll Progress Bar -->
-  <div id="scroll-progress"></div>
+  <div id="progress-bar"></div>
+
+  <!-- Particle Cursor Canvas -->
+  <canvas id="cursor-canvas"></canvas>
 
   <!-- Navigation -->
   <nav id="navbar">
-    <div class="nav-container">
+    <div class="nav-inner">
       <div class="nav-logo">
-        <span class="logo-text">ADAM</span>
-        <span class="logo-dot"></span>
+        <span class="logo-adam">A<span>D</span>A<span>M</span></span>
+        <span class="logo-dot">●</span>
       </div>
       <ul class="nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#how-it-works">So funktioniert's</a></li>
+        <li><a href="#comparison">Vergleich</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#pricing">Preise</a></li>
-        <li><a href="#contact">Kontakt</a></li>
+        <li><a href="#security">Sicherheit</a></li>
+        <li><a href="#contact" class="nav-cta magnetic-btn">Gespräch buchen</a></li>
       </ul>
-      <a href="#pricing" class="nav-cta magnetic-btn">
-        <span>Jetzt starten</span>
-      </a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+      <button class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#features">Features</a>
-      <a href="#how-it-works">So funktioniert's</a>
-      <a href="#pricing">Preise</a>
-      <a href="#contact">Kontakt</a>
-    </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <ul>
+      <li><a href="#comparison">Vergleich</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#pricing">Preise</a></li>
+      <li><a href="#security">Sicherheit</a></li>
+      <li><a href="#contact">Gespräch buchen</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO ===== -->
   <section id="hero">
     <canvas id="hero-canvas"></canvas>
 
-    <!-- Floating Skill Orbs -->
-    <div class="orbs-container" id="orbsContainer">
-      <div class="skill-orb" data-index="0" data-skill="📐 Aufmaß">
-        <span class="orb-emoji">📐</span>
-        <span class="orb-label">Aufmaß</span>
-      </div>
-      <div class="skill-orb" data-index="1" data-skill="📧 E-Mail">
-        <span class="orb-emoji">📧</span>
-        <span class="orb-label">E-Mail</span>
-      </div>
-      <div class="skill-orb" data-index="2" data-skill="📄 Docs">
-        <span class="orb-emoji">📄</span>
-        <span class="orb-label">Docs</span>
-      </div>
-      <div class="skill-orb" data-index="3" data-skill="💰 Buchh.">
-        <span class="orb-emoji">💰</span>
-        <span class="orb-label">Buchh.</span>
-      </div>
-      <div class="skill-orb" data-index="4" data-skill="🔍 Research">
-        <span class="orb-emoji">🔍</span>
-        <span class="orb-label">Research</span>
-      </div>
-      <div class="skill-orb" data-index="5" data-skill="🤖 Auto.">
-        <span class="orb-emoji">🤖</span>
-        <span class="orb-label">Auto.</span>
-      </div>
+    <!-- Skill Orbs floating -->
+    <div class="orbs-container" id="orbs-container">
+      <div class="skill-orb" data-skill="📧" data-label="E-Mail"></div>
+      <div class="skill-orb" data-skill="📅" data-label="Kalender"></div>
+      <div class="skill-orb" data-skill="📄" data-label="Dokumente"></div>
+      <div class="skill-orb" data-skill="🔍" data-label="Recherche"></div>
+      <div class="skill-orb" data-skill="🧮" data-label="Finanzen"></div>
+      <div class="skill-orb" data-skill="🏗️" data-label="Bauwesen"></div>
+      <div class="skill-orb" data-skill="🎤" data-label="Sprache"></div>
+      <div class="skill-orb" data-skill="🌐" data-label="Web"></div>
+      <div class="skill-orb" data-skill="🤖" data-label="Automation"></div>
+      <div class="skill-orb" data-skill="💰" data-label="Buchhaltung"></div>
     </div>
 
-    <!-- Hero Content -->
     <div class="hero-content">
       <div class="hero-badge">
-        <span class="badge-dot"></span>
+        <span class="badge-glow"></span>
         🚀 KI-Assistent der nächsten Generation
       </div>
-      <h1 class="hero-headline">
-        Dein persönlicher<br />
-        <span class="gradient-text">KI-Assistent</span><br />
-        für maximale<br />
-        <span class="highlight-text">Produktivität</span>
+      <h1 class="hero-title">
+        Dein persönlicher<br>
+        <span class="gradient-text">KI-Assistent</span><br>
+        — 24/7 auf WhatsApp
       </h1>
       <p class="hero-subtitle">
-        <span id="typing-target"></span><span class="typing-cursor">|</span>
+        <span id="typing-text"></span><span class="cursor-blink">|</span>
       </p>
-
-      <!-- Stats Row -->
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-number" data-target="80" data-suffix="%">0%</span>
+          <span class="stat-num">80%</span>
           <span class="stat-label">Zeitersparnis</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number" data-value="24/7">24/7</span>
-          <span class="stat-label">Verfügbar</span>
+          <span class="stat-num">24/7</span>
+          <span class="stat-label">verfügbar</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number" data-target="100" data-suffix="+">0+</span>
-          <span class="stat-label">Automations</span>
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Schnittstellen</span>
         </div>
       </div>
-
-      <!-- CTA Buttons -->
       <div class="hero-ctas">
-        <a href="#pricing" class="btn-primary magnetic-btn">
-          <span>Kostenlos testen</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <a href="#contact" class="btn-primary magnetic-btn">
+          <span>Kostenloses Erstgespräch</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#features" class="btn-secondary magnetic-btn">
-          <span>Features entdecken</span>
+        <a href="#skills" class="btn-ghost magnetic-btn">
+          <span>Skills entdecken</span>
         </a>
       </div>
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-wheel">
+        <div class="scroll-dot"></div>
       </div>
-      <span>Scroll down</span>
+      <span>Scrollen</span>
     </div>
   </section>
 
-  <!-- FEATURES SECTION -->
-  <section id="features">
-    <div class="section-bg-element parallax-el" data-speed="0.3"></div>
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">✨ Features</div>
-        <h2>Was ADAM für dich erledigt</h2>
-        <p>Sechs mächtige KI-Skills, die dein Business automatisieren</p>
-      </div>
+  <!-- ===== COMPARISON / KILLER SECTION ===== -->
+  <section id="comparison">
+    <div class="section-container">
+      <div class="comparison-label">💡 Die ehrliche Wahrheit</div>
+      <h2 class="section-title comparison-title">Warum noch ein Vollzeit-Sekretariat?</h2>
 
-      <div class="features-grid" id="featuresGrid">
-        <!-- Card 1 -->
-        <div class="feature-card gsap-fly" data-from="left" data-rotate="-8">
-          <div class="card-glow"></div>
-          <div class="card-icon">📐</div>
-          <h3>Aufmaß & Mengenermittlung</h3>
-          <p>Automatische Berechnung von Flächen, Mengen und Materialien. Spare Stunden bei jedem Projekt — präzise wie ein Profi.</p>
-          <div class="card-tags">
-            <span>Trockenbau</span>
-            <span>Flächen</span>
-            <span>Export</span>
+      <div class="comparison-wrapper">
+        <!-- Old way -->
+        <div class="comp-card comp-old" id="comp-old">
+          <div class="comp-header">
+            <span class="comp-icon">😓</span>
+            <h3>Vollzeit-Sekretariat</h3>
           </div>
-          <div class="card-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <div class="comp-price">
+            <span class="price-tilde">~</span>
+            <span class="price-num" data-target="4000" id="counter-old">0</span>
+            <span class="price-unit">€/Monat</span>
           </div>
+          <ul class="comp-list">
+            <li class="comp-neg">❌ Nur 8h/Tag, 5 Tage/Woche</li>
+            <li class="comp-neg">❌ Urlaub, Krankheit, Feiertage</li>
+            <li class="comp-neg">❌ Sozialabgaben &amp; Lohnnebenkosten</li>
+            <li class="comp-neg">❌ Einarbeitung dauert Monate</li>
+            <li class="comp-neg">❌ Kündigung, Konflikte, Emotionen</li>
+          </ul>
         </div>
 
-        <!-- Card 2 -->
-        <div class="feature-card gsap-fly" data-from="top" data-rotate="5">
-          <div class="card-glow"></div>
-          <div class="card-icon">📧</div>
-          <h3>E-Mail & Kalender</h3>
-          <p>ADAM schreibt, sortiert und beantwortet E-Mails. Termine werden automatisch erkannt und in deinen Kalender eingetragen.</p>
-          <div class="card-tags">
-            <span>Gmail</span>
-            <span>Outlook</span>
-            <span>Google Cal</span>
-          </div>
-          <div class="card-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
+        <!-- VS Badge -->
+        <div class="vs-badge">
+          <div class="vs-ring"></div>
+          <span>VS</span>
         </div>
 
-        <!-- Card 3 -->
-        <div class="feature-card gsap-fly" data-from="right" data-rotate="8">
-          <div class="card-glow"></div>
-          <div class="card-icon">📄</div>
-          <h3>Dokumentation & OCR</h3>
-          <p>Scanne Dokumente, extrahiere Daten per OCR, erstelle professionelle Reports — in Sekunden statt Stunden.</p>
-          <div class="card-tags">
-            <span>OCR</span>
-            <span>PDF</span>
-            <span>Reports</span>
+        <!-- ADAM -->
+        <div class="comp-card comp-new glow-card" id="comp-new">
+          <div class="comp-badge-new">✨ EMPFOHLEN</div>
+          <div class="comp-header">
+            <span class="comp-icon">🤖</span>
+            <h3>ADAM KI-Assistent</h3>
           </div>
-          <div class="card-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <div class="comp-price">
+            <span class="price-num highlight-price" data-target="650" id="counter-new">0</span>
+            <span class="price-unit">€/Monat</span>
           </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="feature-card gsap-fly" data-from="bottom" data-rotate="-5">
-          <div class="card-glow"></div>
-          <div class="card-icon">💰</div>
-          <h3>Buchhaltung (Lexoffice)</h3>
-          <p>Direkte Lexoffice-Integration: Rechnungen erstellen, Belege verbuchen, Auswertungen abrufen — alles per Sprachbefehl.</p>
-          <div class="card-tags">
-            <span>Lexoffice</span>
-            <span>Rechnungen</span>
-            <span>DATEV</span>
-          </div>
-          <div class="card-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="feature-card gsap-fly" data-from="left" data-rotate="6">
-          <div class="card-glow"></div>
-          <div class="card-icon">🔍</div>
-          <h3>Deep Research</h3>
-          <p>Marktanalysen, Wettbewerbsrecherchen, Preisvergleiche — ADAM recherchiert das Web und liefert strukturierte Berichte.</p>
-          <div class="card-tags">
-            <span>Web Search</span>
-            <span>Analyse</span>
-            <span>Reports</span>
-          </div>
-          <div class="card-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="feature-card gsap-fly" data-from="right" data-rotate="-7">
-          <div class="card-glow"></div>
-          <div class="card-icon">🤖</div>
-          <h3>Automatisierungen</h3>
-          <p>Workflows, Cron-Jobs, API-Integrationen — ADAM verbindet deine Tools und lässt sie zusammenarbeiten, während du schläfst.</p>
-          <div class="card-tags">
-            <span>Workflows</span>
-            <span>APIs</span>
-            <span>24/7</span>
-          </div>
-          <div class="card-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <ul class="comp-list">
+            <li class="comp-pos">✅ 24/7 — niemals müde</li>
+            <li class="comp-pos">✅ Kein Urlaub, keine Krankheit</li>
+            <li class="comp-pos">✅ Sofort einsatzbereit</li>
+            <li class="comp-pos">✅ 10+ Systeme gleichzeitig</li>
+            <li class="comp-pos">✅ Lernt täglich dazu</li>
+          </ul>
+          <div class="savings-banner">
+            <span class="savings-label">Das spart:</span>
+            <span class="savings-amount" id="counter-savings">0</span>
+            <span class="savings-year">€ / Jahr</span>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Floating bg elements -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
   </section>
 
-  <!-- HOW IT WORKS SECTION -->
-  <section id="how-it-works">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">⚡ So einfach</div>
-        <h2>In 3 Schritten zur KI-Power</h2>
-        <p>Keine Einrichtung, keine Lernkurve — sofort produktiv</p>
+  <!-- ===== SKILLS SECTION ===== -->
+  <section id="skills">
+    <div class="section-container">
+      <div class="section-eyebrow">🧠 Fähigkeiten</div>
+      <h2 class="section-title">Was ADAM für Sie erledigt</h2>
+      <p class="section-desc">10 Kernkompetenzen — alle gleichzeitig, alle automatisch, alle auf WhatsApp.</p>
+
+      <div class="skills-grid" id="skills-grid">
+
+        <div class="skill-card" data-delay="0">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">📧</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>E-Mail &amp; Kommunikation</h3>
+            <p>Lesen, sortieren, priorisieren und professionell antworten — in Ihrem Namen.</p>
+            <div class="skill-tag">E-Mail · Inbox · Antworten</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="1">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">📅</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Termine &amp; Kalender</h3>
+            <p>Koordinieren, Erinnerungen setzen, Meetings einplanen — vollautomatisch.</p>
+            <div class="skill-tag">Google Cal · Meetings · Alerts</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="2">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">📄</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Dokumente &amp; Verträge</h3>
+            <p>PDFs analysieren, Verträge prüfen, Risiken erkennen und zusammenfassen.</p>
+            <div class="skill-tag">PDF · Verträge · Analyse</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="3">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">🔍</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Recherche &amp; Analyse</h3>
+            <p>Märkte analysieren, Preise vergleichen, Wettbewerber beobachten.</p>
+            <div class="skill-tag">Markt · Preise · Insights</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="4">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">🧮</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Zahlen &amp; Finanzen</h3>
+            <p>Kalkulationen, Budgetplanung, Auswertungen — präzise und sofort.</p>
+            <div class="skill-tag">Excel · Budgets · Reports</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="5">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">🏗️</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Bauwesen</h3>
+            <p>LV-Prüfung, Nachtragsmanagement, Baustellen-Dokumentation digital.</p>
+            <div class="skill-tag">LV · Nachträge · Docs</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="6">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">🎤</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Sprache &amp; Diktat</h3>
+            <p>Sprachnachrichten verstehen, Voice-Antworten senden, Diktat umsetzen.</p>
+            <div class="skill-tag">Whisper · Voice · Diktat</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="7">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">🌐</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Web &amp; Tools</h3>
+            <p>Websites durchsuchen, Formulare ausfüllen, Daten extrahieren.</p>
+            <div class="skill-tag">Browser · Scraping · Forms</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="8">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">🤖</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Automatisierungen</h3>
+            <p>Workflows bauen, n8n Flows, Cron-Jobs und API-Integrationen.</p>
+            <div class="skill-tag">n8n · APIs · Workflows</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
+        <div class="skill-card" data-delay="9">
+          <div class="skill-card-inner">
+            <div class="skill-icon-wrap">
+              <span class="skill-emoji">💰</span>
+              <div class="skill-icon-glow"></div>
+            </div>
+            <h3>Buchhaltung</h3>
+            <p>Lexoffice bedienen, Angebote &amp; Rechnungen erstellen, Belege verwalten.</p>
+            <div class="skill-tag">Lexoffice · Rechnungen · DATEV</div>
+          </div>
+          <div class="card-shine"></div>
+        </div>
+
       </div>
+    </div>
 
-      <div class="steps-container">
-        <div class="step-item gsap-fade-up">
-          <div class="step-number">01</div>
+    <div class="bg-orb bg-orb-3"></div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="how">
+    <div class="section-container">
+      <div class="section-eyebrow">⚡ So einfach</div>
+      <h2 class="section-title">In 3 Schritten live</h2>
+      <div class="steps-row">
+        <div class="step-item" data-step="1">
+          <div class="step-num">01</div>
           <div class="step-content">
-            <div class="step-icon">💬</div>
-            <h3>Beschreibe deine Aufgabe</h3>
-            <p>Schreib oder sprich einfach, was du brauchst. ADAM versteht natürliche Sprache — kein Fachwissen nötig.</p>
+            <h3>Erstgespräch</h3>
+            <p>Kostenlos, unverbindlich. Wir analysieren Ihre Anforderungen und zeigen ADAM live.</p>
           </div>
-          <div class="step-connector"></div>
+          <div class="step-line"></div>
         </div>
-
-        <div class="step-item gsap-fade-up">
-          <div class="step-number">02</div>
+        <div class="step-item" data-step="2">
+          <div class="step-num">02</div>
           <div class="step-content">
-            <div class="step-icon">⚙️</div>
-            <h3>ADAM arbeitet für dich</h3>
-            <p>Der KI-Assistent analysiert, recherchiert und verarbeitet — blitzschnell und präzise, rund um die Uhr.</p>
+            <h3>Einrichtung</h3>
+            <p>Ihr eigener Server, WhatsApp-Anbindung, individuelle Konfiguration — in 5–10 Tagen.</p>
           </div>
-          <div class="step-connector"></div>
+          <div class="step-line"></div>
         </div>
-
-        <div class="step-item gsap-fade-up">
-          <div class="step-number">03</div>
+        <div class="step-item" data-step="3">
+          <div class="step-num">03</div>
           <div class="step-content">
-            <div class="step-icon">✅</div>
-            <h3>Ergebnis in Sekunden</h3>
-            <p>Du erhältst fertige Dokumente, Auswertungen oder ausgeführte Aktionen — direkt einsatzbereit.</p>
+            <h3>Live &amp; Lernen</h3>
+            <p>30 Tage Feintuning inklusive. ADAM lernt täglich dazu und wird immer besser.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING SECTION -->
+  <!-- ===== PRICING ===== -->
   <section id="pricing">
-    <div class="pricing-bg parallax-el" data-speed="0.2"></div>
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">💎 Preise</div>
-        <h2>Transparent & Fair</h2>
-        <p>Wähle das Paket, das zu deinem Business passt</p>
+    <div class="section-container">
+      <div class="section-eyebrow">💎 Transparente Preise</div>
+      <h2 class="section-title">Ein Paket. Alles drin.</h2>
+      <p class="section-desc">Keine versteckten Kosten. Keine Überraschungen. Nur Ergebnisse.</p>
+
+      <div class="pricing-wrapper">
+        <div class="pricing-card glow-card" id="pricing-card">
+          <div class="pricing-badge">🏆 Alles inklusive</div>
+
+          <div class="pricing-block">
+            <div class="pricing-block-label">Einmalig</div>
+            <div class="pricing-amount">
+              <span class="pricing-big">3.500</span>
+              <span class="pricing-currency">€</span>
+            </div>
+            <div class="pricing-block-sub">Einrichtungsgebühr</div>
+            <ul class="pricing-list">
+              <li>✓ Eigener Server in Deutschland</li>
+              <li>✓ WhatsApp-Anbindung einrichten</li>
+              <li>✓ Individuelle Konfiguration</li>
+              <li>✓ Schulung + 30 Tage Feintuning</li>
+            </ul>
+          </div>
+
+          <div class="pricing-divider">
+            <div class="pricing-divider-line"></div>
+            <span>dann monatlich</span>
+            <div class="pricing-divider-line"></div>
+          </div>
+
+          <div class="pricing-block">
+            <div class="pricing-block-label">Monatlich</div>
+            <div class="pricing-amount">
+              <span class="pricing-big highlight-price">650</span>
+              <span class="pricing-currency">€</span>
+              <span class="pricing-per">/Monat</span>
+            </div>
+            <ul class="pricing-list">
+              <li>✓ Hosting &amp; Wartung</li>
+              <li>✓ Support &amp; Updates</li>
+              <li>✓ Anpassungen inklusive</li>
+            </ul>
+          </div>
+
+          <div class="pricing-api">
+            <span class="api-icon">⚡</span>
+            <div>
+              <strong>API-Kosten: 20–80 €/Monat</strong>
+              <span>transparent nach Verbrauch</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn-primary magnetic-btn pricing-cta">
+            <span>Kostenloses Erstgespräch buchen</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <div class="pricing-tel">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.51 2 2 0 0 1 3.6 1.36h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+            <a href="tel:+492118823352">+49 211 88 233 529</a>
+          </div>
+        </div>
+
+        <div class="pricing-comparison-mini">
+          <h3>Vs. Alternative</h3>
+          <div class="mini-row">
+            <span>Vollzeit-Sekretariat</span>
+            <span class="mini-bad">~4.000 €/M</span>
+          </div>
+          <div class="mini-row highlight-row">
+            <span>ADAM</span>
+            <span class="mini-good">650 €/M</span>
+          </div>
+          <div class="mini-savings">
+            <span>Sie sparen</span>
+            <span class="mini-savings-num">40.200 €/Jahr</span>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="pricing-grid">
-        <!-- Starter -->
-        <div class="pricing-card gsap-fade-up">
-          <div class="plan-badge">Starter</div>
-          <div class="plan-price">
-            <span class="price-currency">€</span>
-            <span class="price-amount">99</span>
-            <span class="price-period">/Monat</span>
-          </div>
-          <ul class="plan-features">
-            <li>✅ E-Mail & Kalender</li>
-            <li>✅ Dokumenten-OCR</li>
-            <li>✅ Basic Automations (10/M)</li>
-            <li>✅ WhatsApp Support</li>
-            <li class="disabled">❌ Lexoffice Integration</li>
-            <li class="disabled">❌ Deep Research</li>
-          </ul>
-          <a href="#contact" class="plan-btn magnetic-btn">
-            <span>Starter wählen</span>
-          </a>
+    <div class="bg-orb bg-orb-4"></div>
+  </section>
+
+  <!-- ===== SECURITY ===== -->
+  <section id="security">
+    <div class="section-container">
+      <div class="section-eyebrow">🔐 Datenschutz</div>
+      <h2 class="section-title">Ihre Daten. Ihre Kontrolle.</h2>
+
+      <div class="security-grid">
+        <div class="security-card" data-sec="0">
+          <div class="sec-icon">🇩🇪</div>
+          <h3>Server in Deutschland</h3>
+          <p>Ihr ADAM läuft ausschließlich auf einem dedizierten Server in Deutschland — keine Cloud, keine Drittanbieter.</p>
         </div>
-
-        <!-- Professional (featured) -->
-        <div class="pricing-card featured gsap-fade-up">
-          <div class="plan-popular">⭐ Beliebteste Wahl</div>
-          <div class="plan-badge">Professional</div>
-          <div class="plan-price">
-            <span class="price-currency">€</span>
-            <span class="price-amount">249</span>
-            <span class="price-period">/Monat</span>
-          </div>
-          <ul class="plan-features">
-            <li>✅ Alle Starter Features</li>
-            <li>✅ Aufmaß & Mengenermittlung</li>
-            <li>✅ Lexoffice Integration</li>
-            <li>✅ Deep Research</li>
-            <li>✅ Unlimited Automations</li>
-            <li>✅ Priority Support 24/7</li>
-          </ul>
-          <a href="#contact" class="plan-btn featured magnetic-btn">
-            <span>Jetzt starten</span>
-          </a>
+        <div class="security-card" data-sec="1">
+          <div class="sec-icon">🔒</div>
+          <h3>Ihre Daten gehören Ihnen</h3>
+          <p>Vollständige Datensouveränität. Kein Training auf Ihren Daten. Export und Löschung jederzeit möglich.</p>
         </div>
-
-        <!-- Enterprise -->
-        <div class="pricing-card gsap-fade-up">
-          <div class="plan-badge">Enterprise</div>
-          <div class="plan-price">
-            <span class="price-amount enterprise">Individuell</span>
-          </div>
-          <ul class="plan-features">
-            <li>✅ Alles aus Professional</li>
-            <li>✅ Custom Integrationen</li>
-            <li>✅ Eigene KI-Modelle</li>
-            <li>✅ Dedicated Server</li>
-            <li>✅ SLA Garantie</li>
-            <li>✅ Persönlicher Account Manager</li>
-          </ul>
-          <a href="#contact" class="plan-btn magnetic-btn">
-            <span>Kontakt aufnehmen</span>
-          </a>
+        <div class="security-card" data-sec="2">
+          <div class="sec-icon">✅</div>
+          <h3>DSGVO-konform</h3>
+          <p>Vollständige Konformität mit der Datenschutz-Grundverordnung. Auftragsverarbeitungsvertrag inklusive.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT / CTA SECTION -->
+  <!-- ===== CONTACT ===== -->
   <section id="contact">
-    <div class="container">
-      <div class="cta-box">
-        <div class="cta-glow"></div>
-        <div class="cta-content gsap-fade-up">
-          <h2>Bereit, dein Business zu automatisieren?</h2>
-          <p>Starte noch heute mit ADAM und erlebe, wie KI deine Produktivität auf ein neues Level hebt.</p>
-          <div class="cta-buttons">
-            <a href="mailto:hallo@acsel.gmbh" class="btn-primary magnetic-btn large">
-              <span>Kontakt aufnehmen</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="https://wa.me/4915234041497" target="_blank" class="btn-whatsapp magnetic-btn large">
+    <div class="section-container">
+      <div class="section-eyebrow">📞 Kontakt</div>
+      <h2 class="section-title">Bereit für die Zukunft?</h2>
+      <p class="section-desc">Buchen Sie Ihr kostenloses Erstgespräch — oder schreiben Sie uns direkt.</p>
+
+      <div class="contact-wrapper">
+        <form class="contact-form" id="contact-form" action="mailto:a.d.a.m@agentmail.to" method="get">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ihr Name</label>
+              <input type="text" name="name" placeholder="Max Mustermann" required />
+            </div>
+            <div class="form-group">
+              <label>Ihre E-Mail</label>
+              <input type="email" name="email" placeholder="max@firma.de" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Telefon (optional)</label>
+            <input type="tel" name="phone" placeholder="+49 211 ..." />
+          </div>
+          <div class="form-group">
+            <label>Ihre Nachricht</label>
+            <textarea name="message" rows="4" placeholder="Erzählen Sie uns von Ihrem Unternehmen und was Sie automatisieren möchten..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary magnetic-btn form-submit">
+            <span>Nachricht senden</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+
+        <div class="contact-direct">
+          <h3>Direkt erreichbar</h3>
+          <a href="tel:+492118823352" class="contact-link">
+            <div class="contact-link-icon">📞</div>
+            <div>
+              <span>Telefon</span>
+              <strong>+49 211 88 233 529</strong>
+            </div>
+          </a>
+          <a href="mailto:a.d.a.m@agentmail.to" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div>
+              <span>E-Mail</span>
+              <strong>a.d.a.m@agentmail.to</strong>
+            </div>
+          </a>
+          <a href="https://wa.me/492118823352" class="contact-link">
+            <div class="contact-link-icon">💬</div>
+            <div>
               <span>WhatsApp</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 0C5.373 0 0 5.373 0 12c0 2.117.553 4.103 1.523 5.824L0 24l6.341-1.499A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.626 0 11.999 0zm.001 21.818a9.818 9.818 0 01-5.006-1.366l-.36-.213-3.722.879.936-3.618-.235-.372A9.818 9.818 0 012.182 12c0-5.413 4.405-9.818 9.818-9.818 5.414 0 9.818 4.405 9.818 9.818 0 5.414-4.404 9.818-9.818 9.818z"/></svg>
-            </a>
+              <strong>Jetzt schreiben</strong>
+            </div>
+          </a>
+          <div class="contact-availability">
+            <div class="avail-dot"></div>
+            <span>ADAM ist jetzt online</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer id="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="nav-logo">
-            <span class="logo-text">ADAM</span>
-            <span class="logo-dot"></span>
-          </div>
-          <p>Der KI-Assistent der nächsten Generation — entwickelt von ACSEL GmbH.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Preise</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h4>Kontakt</h4>
-          <p>📧 hallo@acsel.gmbh</p>
-          <p>📱 WhatsApp: +49 152 340 41497</p>
-        </div>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-adam">A<span>D</span>A<span>M</span></span>
+        <p>KI-Assistent der nächsten Generation</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 ACSEL GmbH — ADAM KI-Assistent. Alle Rechte vorbehalten.</p>
+      <div class="footer-links">
+        <a href="#comparison">Vergleich</a>
+        <a href="#skills">Skills</a>
+        <a href="#pricing">Preise</a>
+        <a href="#security">Sicherheit</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+      <div class="footer-legal">
+        <p>© 2026 ADAM — KI-Assistent | ACSEL GmbH</p>
+        <p>Düsseldorf, Deutschland 🇩🇪</p>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
