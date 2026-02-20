@@ -1201,3 +1201,9 @@ section { position: relative; padding: 120px 24px; }
 
 /* ===== SELECTION ===== */
 ::selection { background: rgba(0,245,255,0.2); color: var(--text); }
+
+/* === ANIMATION FALLBACK ===*/
+.skill-card { opacity: 1; transform: none; transition: opacity 0.3s; }
+#pricing-card { opacity: 1; transform: none; }
+.security-card { opacity: 1; transform: none; }
+.step-item { opacity: 1; transform: none; }
