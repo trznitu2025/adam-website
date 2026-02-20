@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSecurityCards();
   initParallax();
   initContactForm();
+  setTimeout(() => ScrollTrigger.refresh(), 500);
 });
 
 /* =====================
@@ -403,7 +404,7 @@ function initComparisonSection() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '#comparison',
-        start: 'top 75%',
+        start: 'top 85%',
       }
     }
   );
@@ -415,7 +416,7 @@ function initComparisonSection() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '#comparison',
-        start: 'top 75%',
+        start: 'top 85%',
       }
     }
   );
@@ -439,7 +440,7 @@ function initComparisonSection() {
 
   ScrollTrigger.create({
     trigger: '#comparison',
-    start: 'top 60%',
+    start: 'top 80%',
     once: true,
     onEnter: () => {
       animateCounter(counterOld, 4000, 2.5, '');
@@ -479,7 +480,7 @@ function initSkillCards() {
       delay: i * 0.08,
       scrollTrigger: {
         trigger: '#skills',
-        start: 'top 70%',
+        start: 'top 85%',
       }
     });
   });
@@ -537,7 +538,7 @@ function initHowSteps() {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '#how',
-          start: 'top 70%',
+          start: 'top 85%',
         }
       }
     );
@@ -556,7 +557,7 @@ function initPricingCard() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '#pricing',
-        start: 'top 70%',
+        start: 'top 85%',
       }
     }
   );
@@ -570,7 +571,7 @@ function initPricingCard() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '#pricing',
-        start: 'top 70%',
+        start: 'top 85%',
       }
     }
   );
@@ -591,7 +592,7 @@ function initSecurityCards() {
         ease: 'back.out(1.5)',
         scrollTrigger: {
           trigger: '#security',
-          start: 'top 70%',
+          start: 'top 85%',
         }
       }
     );
@@ -652,7 +653,7 @@ function initContactForm() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '#contact',
-        start: 'top 70%',
+        start: 'top 85%',
       }
     }
   );
@@ -666,7 +667,7 @@ function initContactForm() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '#contact',
-        start: 'top 70%',
+        start: 'top 85%',
       }
     }
   );
@@ -705,3 +706,4 @@ document.querySelectorAll('.section-desc').forEach(el => {
     }
   );
 });
+
