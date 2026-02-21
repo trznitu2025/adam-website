@@ -282,11 +282,11 @@ function initTypingEffect() {
 
   const phrases = [
     'Automatisiert. Intelligent. Immer verfügbar.',
-    'Auf WhatsApp, Telegram, Signal & mehr.',
-    'Spart Ihnen 40.200 € pro Jahr.',
-    '24/7 für Sie im Einsatz.',
-    'Ihr Assistent — auf jedem Messenger.',
-    'Nie wieder Anfragen verpassen.',
+    '💬 WhatsApp — immer erreichbar.',
+    '✈️ Telegram — blitzschnell.',
+    '🔒 Signal — sicher & privat.',
+    '🎮 Discord — für jede Community.',
+    '📱 Alle Messenger. Ein Assistent.',
   ];
   let phraseIdx = 0;
   let charIdx = 0;
