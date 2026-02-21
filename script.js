@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initHeroCanvas();
   initSkillOrbs();
+  initMessengerRotate();
   initTypingEffect();
   initHeroEntrance();
   initParticleCursor();
@@ -341,7 +342,43 @@ function initSkillOrbs() {
 }
 
 /* =====================
-   6. TYPING EFFECT
+   6. MESSENGER ROTATE
+   ===================== */
+function initMessengerRotate() {
+  const el = document.getElementById('messenger-name');
+  if (!el) return;
+
+  const messengers = ['WhatsApp', 'Telegram', 'Signal', 'Discord'];
+  let idx = 0;
+
+  function next() {
+    // Fade out + slide up
+    el.classList.add('fade-out');
+
+    setTimeout(() => {
+      idx = (idx + 1) % messengers.length;
+      el.textContent = messengers[idx];
+
+      // Reset to slide-in from below
+      el.classList.remove('fade-out');
+      el.classList.add('fade-in');
+
+      // Force reflow so transition triggers
+      void el.offsetWidth;
+
+      // Fade in
+      el.classList.remove('fade-in');
+    }, 420);
+  }
+
+  // Start cycling after 2s, every 2.5s
+  setTimeout(() => {
+    setInterval(next, 2500);
+  }, 2000);
+}
+
+/* =====================
+   7. TYPING EFFECT
    ===================== */
 function initTypingEffect() {
   const el = document.getElementById('typing-text');

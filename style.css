@@ -293,6 +293,30 @@ img { max-width: 100%; display: block; }
   50% { opacity: 0; }
 }
 
+/* Messenger Rotating Name */
+.messenger-rotate-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.messenger-name {
+  display: inline-block;
+  background: linear-gradient(135deg, #00f5ff, #b44fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  white-space: nowrap;
+}
+.messenger-name.fade-out {
+  opacity: 0;
+  transform: translateY(-18px);
+}
+.messenger-name.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
 /* Messenger Badges */
 .messenger-badges {
   display: flex;
