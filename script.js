@@ -210,23 +210,35 @@ function initHeroCanvas() {
    ===================== */
 function initSkillOrbs() {
   const orbs = document.querySelectorAll('.skill-orb');
-  const container = document.getElementById('orbs-container');
   if (!orbs.length) return;
 
-  const centerX = 50;
-  const centerY = 50;
-  const rx = 32, ry = 20;
+  // Random starting positions spread across the whole container
+  const startPositions = [
+    { x: 8,  y: 12 }, { x: 88, y: 8  }, { x: 15, y: 78 },
+    { x: 82, y: 72 }, { x: 45, y: 5  }, { x: 5,  y: 45 },
+    { x: 92, y: 38 }, { x: 50, y: 85 }, { x: 28, y: 55 },
+    { x: 70, y: 25 }, { x: 35, y: 20 }, { x: 60, y: 65 },
+    { x: 18, y: 35 }, { x: 78, y: 55 }, { x: 42, y: 70 },
+  ];
 
   orbs.forEach((orb, i) => {
-    const angle = (i / orbs.length) * Math.PI * 2;
-    const speed = 0.3 + Math.random() * 0.2;
-    const phaseOffset = angle;
-    const wobble = Math.random() * 3;
+    const startPos = startPositions[i % startPositions.length];
+
+    // Each orb gets a unique random drift path
+    const driftX1 = (Math.random() - 0.5) * 60;
+    const driftY1 = (Math.random() - 0.5) * 40;
+    const driftX2 = (Math.random() - 0.5) * 60;
+    const driftY2 = (Math.random() - 0.5) * 40;
+    const driftX3 = (Math.random() - 0.5) * 60;
+    const driftY3 = (Math.random() - 0.5) * 40;
+
+    const duration = 12 + Math.random() * 10;
+    const delay = i * 0.15;
 
     gsap.set(orb, {
       position: 'absolute',
-      left: (centerX + rx * Math.cos(phaseOffset)) + '%',
-      top: (centerY + ry * Math.sin(phaseOffset)) + '%',
+      left: startPos.x + '%',
+      top: startPos.y + '%',
       xPercent: -50,
       yPercent: -50,
       opacity: 0,
@@ -238,20 +250,26 @@ function initSkillOrbs() {
       opacity: 1,
       scale: 1,
       duration: 0.8,
-      delay: 1.5 + i * 0.08,
+      delay: 1.5 + delay,
       ease: 'back.out(2)',
     });
 
-    // Orbit animation
-    let t = phaseOffset;
-    function animateOrb() {
-      t += 0.004 * speed;
-      const x = centerX + rx * Math.cos(t);
-      const y = centerY + ry * Math.sin(t) + Math.sin(t * 2.3 + wobble) * 3;
-      gsap.set(orb, { left: x + '%', top: y + '%' });
-      requestAnimationFrame(animateOrb);
-    }
-    animateOrb();
+    // Random floating animation — looping through random waypoints
+    const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+    const randomFlight = () => {
+      const nx = clamp(startPos.x + driftX1 + (Math.random() - 0.5) * 30, 3, 96);
+      const ny = clamp(startPos.y + driftY1 + (Math.random() - 0.5) * 20, 3, 93);
+      gsap.to(orb, {
+        left: nx + '%',
+        top: ny + '%',
+        duration: duration * (0.7 + Math.random() * 0.6),
+        ease: 'sine.inOut',
+        delay: 1.5 + delay,
+        onComplete: randomFlight,
+      });
+    };
+    // Start slightly offset so they don't all move at once
+    gsap.delayedCall(1.5 + delay + Math.random() * 2, randomFlight);
   });
 }
 
