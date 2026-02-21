@@ -233,8 +233,8 @@ function initSkillOrbs() {
     const driftX3 = (Math.random() - 0.5) * 60;
     const driftY3 = (Math.random() - 0.5) * 40;
 
-    const duration = 12 + Math.random() * 10;
-    const delay = i * 0.15;
+    const duration = 4 + Math.random() * 4;
+    const delay = i * 0.1;
 
     gsap.set(orb, {
       position: 'absolute',
@@ -258,19 +258,18 @@ function initSkillOrbs() {
     // Random floating animation — looping through random waypoints
     const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
     const randomFlight = () => {
-      const nx = clamp(startPos.x + driftX1 + (Math.random() - 0.5) * 30, 3, 96);
-      const ny = clamp(startPos.y + driftY1 + (Math.random() - 0.5) * 20, 3, 93);
+      const nx = clamp((Math.random()) * 90 + 4, 4, 94);
+      const ny = clamp((Math.random()) * 85 + 4, 4, 92);
       gsap.to(orb, {
         left: nx + '%',
         top: ny + '%',
-        duration: duration * (0.7 + Math.random() * 0.6),
-        ease: 'sine.inOut',
-        delay: 1.5 + delay,
+        duration: duration * (0.6 + Math.random() * 0.5),
+        ease: 'power1.inOut',
         onComplete: randomFlight,
       });
     };
     // Start slightly offset so they don't all move at once
-    gsap.delayedCall(1.5 + delay + Math.random() * 2, randomFlight);
+    gsap.delayedCall(1.5 + delay + Math.random() * 0.8, randomFlight);
   });
 
   // ── SPIDERWEB CANVAS ──────────────────────────────────────────
@@ -285,51 +284,47 @@ function initSkillOrbs() {
   resizeWebCanvas();
   window.addEventListener('resize', resizeWebCanvas);
 
-  const MAX_DIST = Math.min(window.innerWidth * 0.28, 320);
-
   function drawWeb() {
-    // Re-read max dist on each frame (responsive)
-    const maxD = Math.min(window.innerWidth * 0.28, 320);
-    webCanvas.width  = window.innerWidth;
-    webCanvas.height = window.innerHeight;
-
     ctx.clearRect(0, 0, webCanvas.width, webCanvas.height);
 
     // Collect centre positions of all visible orbs
     const positions = [];
     orbs.forEach(orb => {
       const rect = orb.getBoundingClientRect();
-      if (rect.width === 0) return; // not yet visible
+      if (rect.width === 0 || parseFloat(orb.style.opacity) < 0.1) return;
       positions.push({
         x: rect.left + rect.width  / 2,
         y: rect.top  + rect.height / 2,
       });
     });
 
-    // Draw lines between every pair within maxD
+    const diag = Math.sqrt(webCanvas.width ** 2 + webCanvas.height ** 2);
+
+    // Draw lines between ALL pairs — always connected, opacity fades with distance
     for (let i = 0; i < positions.length; i++) {
       for (let j = i + 1; j < positions.length; j++) {
-        const dx = positions[i].x - positions[j].x;
-        const dy = positions[i].y - positions[j].y;
+        const dx   = positions[i].x - positions[j].x;
+        const dy   = positions[i].y - positions[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist > maxD) continue;
 
-        const alpha = (1 - dist / maxD) * 0.45; // max 45% opacity
+        // Always connected: close = bright (0.5), far = faint (0.04)
+        const proximity = 1 - Math.min(dist / (diag * 0.55), 1);
+        const alpha = 0.04 + proximity * 0.46;
+        const width = 0.3 + proximity * 1.0;
 
-        // Elegant gradient line: cyan → purple
         const grad = ctx.createLinearGradient(
           positions[i].x, positions[i].y,
           positions[j].x, positions[j].y
         );
         grad.addColorStop(0,   `rgba(0,245,255,${alpha})`);
-        grad.addColorStop(0.5, `rgba(120,80,255,${alpha * 0.7})`);
+        grad.addColorStop(0.5, `rgba(120,60,255,${alpha * 0.8})`);
         grad.addColorStop(1,   `rgba(180,79,255,${alpha})`);
 
         ctx.beginPath();
         ctx.moveTo(positions[i].x, positions[i].y);
         ctx.lineTo(positions[j].x, positions[j].y);
         ctx.strokeStyle = grad;
-        ctx.lineWidth   = (1 - dist / maxD) * 1.2;
+        ctx.lineWidth   = width;
         ctx.stroke();
       }
     }
@@ -338,7 +333,7 @@ function initSkillOrbs() {
   }
 
   // Start after orbs appear
-  setTimeout(drawWeb, 2500);
+  setTimeout(drawWeb, 2200);
 }
 
 /* =====================
