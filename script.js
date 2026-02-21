@@ -517,56 +517,84 @@ function initMagneticButtons() {
 function initComparisonSection() {
   // Slide in cards
   gsap.fromTo('#comp-old',
-    { opacity: 0, x: -100, rotation: -5 },
-    {
-      opacity: 1, x: 0, rotation: 0, duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#comparison',
-        start: 'top 85%',
-      }
-    }
+    { opacity: 0, x: -120, rotation: -6, scale: 0.92 },
+    { opacity: 1, x: 0, rotation: 0, scale: 1, duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { trigger: '#comparison', start: 'top 85%' } }
+  );
+  gsap.fromTo('#comp-new',
+    { opacity: 0, x: 120, rotation: 6, scale: 0.92 },
+    { opacity: 1, x: 0, rotation: 0, scale: 1, duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { trigger: '#comparison', start: 'top 85%' } }
   );
 
-  gsap.fromTo('#comp-new',
-    { opacity: 0, x: 100, rotation: 5 },
-    {
-      opacity: 1, x: 0, rotation: 0, duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#comparison',
-        start: 'top 85%',
-      }
-    }
+  // Stagger list items
+  gsap.fromTo('#comp-old .comp-neg',
+    { opacity: 0, x: -30 },
+    { opacity: 1, x: 0, duration: 0.4, stagger: 0.1, ease: 'power2.out',
+      scrollTrigger: { trigger: '#comparison', start: 'top 70%' } }
+  );
+  gsap.fromTo('#comp-new .comp-pos',
+    { opacity: 0, x: 30 },
+    { opacity: 1, x: 0, duration: 0.4, stagger: 0.1, ease: 'power2.out',
+      scrollTrigger: { trigger: '#comparison', start: 'top 70%' } }
   );
 
   // Counter animations
-  const counterOld = document.getElementById('counter-old');
-  const counterNew = document.getElementById('counter-new');
+  const counterOld     = document.getElementById('counter-old');
+  const counterNew     = document.getElementById('counter-new');
   const counterSavings = document.getElementById('counter-savings');
 
-  function animateCounter(el, target, duration, suffix) {
+  function animateCounter(el, target, duration) {
     gsap.to({ val: 0 }, {
-      val: target,
-      duration,
-      ease: 'power2.out',
+      val: target, duration, ease: 'power2.out',
       onUpdate: function() {
-        const v = Math.round(this.targets()[0].val);
-        el.textContent = v.toLocaleString('de-DE') + (suffix || '');
+        el.textContent = Math.round(this.targets()[0].val).toLocaleString('de-DE');
       }
     });
   }
 
   ScrollTrigger.create({
-    trigger: '#comparison',
-    start: 'top 80%',
-    once: true,
+    trigger: '#comparison', start: 'top 80%', once: true,
     onEnter: () => {
-      animateCounter(counterOld, 4000, 2.5, '');
-      setTimeout(() => animateCounter(counterNew, 650, 2, ''), 400);
-      setTimeout(() => animateCounter(counterSavings, 40200, 2.2, ''), 800);
+      animateCounter(counterOld, 4000, 2.5);
+      setTimeout(() => animateCounter(counterNew, 650, 2), 400);
+      setTimeout(() => animateCounter(counterSavings, 40200, 2.5), 800);
     }
   });
+
+  // Hover shake on neg items
+  document.querySelectorAll('.comp-neg').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      gsap.fromTo(el, { x: 0 }, { x: -6, duration: 0.05, yoyo: true, repeat: 5, ease: 'none' });
+    });
+  });
+
+  // Hover pulse on pos items
+  document.querySelectorAll('.comp-pos').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      gsap.fromTo(el, { scale: 1 }, { scale: 1.03, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.out' });
+    });
+  });
+
+  // Tooltip on data-tooltip items
+  const tooltip = document.getElementById('comp-tooltip');
+  if (tooltip) {
+    document.querySelectorAll('[data-tooltip]').forEach(el => {
+      el.addEventListener('mouseenter', (e) => {
+        tooltip.textContent = el.dataset.tooltip;
+        tooltip.style.opacity = '1';
+        positionTooltip(e);
+      });
+      el.addEventListener('mousemove', positionTooltip);
+      el.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; });
+    });
+  }
+
+  function positionTooltip(e) {
+    if (!tooltip) return;
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top  = (e.clientY - 32) + 'px';
+  }
 }
 
 /* =====================

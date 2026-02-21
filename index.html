@@ -122,9 +122,12 @@
       <div class="comparison-label">&#x1F4A1; Die ehrliche Wahrheit</div>
       <h2 class="section-title comparison-title">Warum noch ein Vollzeit-Sekretariat?</h2>
       <div class="comparison-wrapper">
+
+        <!-- LEFT: OLD -->
         <div class="comp-card comp-old" id="comp-old">
+          <div class="comp-doom-stamp">VERALTET</div>
           <div class="comp-header">
-            <span class="comp-icon">&#x1F465;</span>
+            <span class="comp-icon comp-icon-old">&#x1F4BC;</span>
             <h3>Vollzeit-Sekretariat</h3>
           </div>
           <div class="comp-price">
@@ -133,18 +136,27 @@
             <span class="price-unit">&euro;/Monat</span>
           </div>
           <ul class="comp-list">
-            <li class="comp-neg">&#x274C; Nur 8h/Tag, 5 Tage/Woche</li>
-            <li class="comp-neg">&#x274C; Urlaub, Krankheit, Feiertage</li>
-            <li class="comp-neg">&#x274C; Sozialabgaben &amp; Lohnnebenkosten</li>
-            <li class="comp-neg">&#x274C; Einarbeitung dauert Monate</li>
-            <li class="comp-neg">&#x274C; K&uuml;ndigung, Konflikte, Emotionen</li>
+            <li class="comp-neg" data-tooltip="Montags-Freitags 9–17 Uhr. Danach: niemand.">&#x274C; Nur 8h/Tag, 5 Tage/Woche</li>
+            <li class="comp-neg" data-tooltip="30 Tage Urlaub + Krankheitstage = 60+ Tage/Jahr ausgefallen">&#x274C; 30 Tage Urlaub pro Jahr</li>
+            <li class="comp-neg" data-tooltip="Krankenkasse, Rente, Pflege — kostet Sie extra 20–23% obendrauf">&#x274C; Sozialabgaben ~22% zus&auml;tzlich</li>
+            <li class="comp-neg" data-tooltip="Einarbeitung 3–6 Monate — bis dahin: volle Kosten, halbe Leistung">&#x274C; 3–6 Monate Einarbeitung</li>
+            <li class="comp-neg" data-tooltip="Kündigungsschutzgesetz — selbst bei Schlechtleistung kaum kündbar">&#x274C; K&uuml;ndigungsschutz &amp; Konflikte</li>
+            <li class="comp-neg" data-tooltip="Hardware, Software-Lizenzen, Büroausstattung — alles auf Ihre Kosten">&#x274C; B&uuml;rokosten &amp; Ausstattung</li>
+            <li class="comp-neg" data-tooltip="Jeder Mensch macht Fehler — besonders unter Stress oder Zeitdruck">&#x274C; Fehleranf&auml;llig unter Stress</li>
+            <li class="comp-neg" data-tooltip="Immer nur eine Aufgabe gleichzeitig — Multitasking ist ein Mythos">&#x274C; Eine Aufgabe nach der anderen</li>
+            <li class="comp-neg" data-tooltip="Kündigung, Neusuche, Einarbeitung — kostet Sie 6–12 Monate">&#x274C; Fluktuation &amp; Wiederbeschaffung</li>
           </ul>
         </div>
+
         <div class="vs-badge"><div class="vs-ring"></div><span>VS</span></div>
+
+        <!-- RIGHT: ADAM -->
         <div class="comp-card comp-new glow-card" id="comp-new">
-          <div class="comp-badge-new">&#x2B50; EMPFOHLEN</div>
+          <div class="comp-badge-new">&#x26A1; EMPFOHLEN</div>
           <div class="comp-header">
-            <span class="comp-icon">&#x1F916;</span>
+            <span class="comp-icon comp-icon-adam">
+              <img src="assets/adam-logo-v1.png" alt="ADAM" class="comp-logo-img">
+            </span>
             <h3>ADAM KI-Assistent</h3>
           </div>
           <div class="comp-price">
@@ -152,11 +164,15 @@
             <span class="price-unit">&euro;/Monat</span>
           </div>
           <ul class="comp-list">
-            <li class="comp-pos">&#x2705; 24/7 &mdash; niemals m&uuml;de</li>
-            <li class="comp-pos">&#x2705; Kein Urlaub, keine Krankheit</li>
-            <li class="comp-pos">&#x2705; Sofort einsatzbereit</li>
-            <li class="comp-pos">&#x2705; 10+ Systeme gleichzeitig</li>
-            <li class="comp-pos">&#x2705; Lernt t&auml;glich dazu</li>
+            <li class="comp-pos" data-tooltip="Rund um die Uhr — auch Sonntagnacht um 3 Uhr">&#x2705; 24/7 &mdash; niemals m&uuml;de</li>
+            <li class="comp-pos" data-tooltip="Kein einziger Urlaubstag, kein Krankenschein — immer verfügbar">&#x2705; 0 Tage Ausfall im Jahr</li>
+            <li class="comp-pos" data-tooltip="Ab dem ersten Tag produktiv — keine Einarbeitung nötig">&#x2705; Sofort einsatzbereit</li>
+            <li class="comp-pos" data-tooltip="E-Mail, Kalender, Dokumente, Buchhaltung — alles parallel">&#x2705; 16 Aufgaben gleichzeitig</li>
+            <li class="comp-pos" data-tooltip="Jede Interaktion verbessert ADAM — ohne extra Kosten">&#x2705; Lernt t&auml;glich automatisch dazu</li>
+            <li class="comp-pos" data-tooltip="WhatsApp, Telegram, Signal, Discord, E-Mail — überall erreichbar">&#x2705; Auf allen Messengern aktiv</li>
+            <li class="comp-pos" data-tooltip="Keine Fehler durch Tippfehler, Vergessen oder schlechten Tag">&#x2705; Konsistent &amp; fehlerfrei</li>
+            <li class="comp-pos" data-tooltip="Keine Hardware, keine Lizenzen, keine Bürofläche nötig">&#x2705; Null Infrastrukturkosten</li>
+            <li class="comp-pos" data-tooltip="Jederzeit per WhatsApp anpassbar — ohne Verhandlungen">&#x2705; Flexibel anpassbar in Sekunden</li>
           </ul>
           <div class="savings-banner">
             <span class="savings-label">Das spart:</span>
@@ -164,8 +180,11 @@
             <span class="savings-year">&euro; / Jahr</span>
           </div>
         </div>
+
       </div>
     </div>
+    <!-- Tooltip container -->
+    <div id="comp-tooltip" class="comp-tooltip"></div>
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
   </section>

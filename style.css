@@ -646,8 +646,77 @@ section { position: relative; padding: 120px 24px; }
   margin-bottom: 32px;
 }
 .comp-list li { font-size: 0.9rem; }
-.comp-neg { color: var(--text-muted); }
-.comp-pos { color: var(--text); font-weight: 500; }
+.comp-neg {
+  color: #ff6b6b;
+  cursor: default;
+  transition: transform 0.2s, color 0.2s;
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+.comp-neg:hover {
+  color: #ff4444;
+  transform: translateX(-4px);
+  background: rgba(255,68,68,0.07);
+}
+.comp-pos {
+  color: var(--text);
+  font-weight: 500;
+  cursor: default;
+  transition: transform 0.2s, color 0.2s;
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+.comp-pos:hover {
+  color: var(--cyan);
+  transform: translateX(5px);
+  background: rgba(0,245,255,0.06);
+}
+
+/* Doom stamp on old card */
+.comp-doom-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  font-size: 2.8rem;
+  font-weight: 900;
+  font-family: var(--font2);
+  color: rgba(255,60,60,0.08);
+  letter-spacing: 0.15em;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ADAM logo in comparison */
+.comp-logo-img {
+  height: 44px;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(0,245,255,0.7));
+}
+.comp-icon-adam {
+  display: flex;
+  align-items: center;
+}
+
+/* Tooltip */
+.comp-tooltip {
+  position: fixed;
+  background: rgba(10,10,20,0.95);
+  border: 1px solid rgba(0,245,255,0.3);
+  color: var(--text);
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  max-width: 240px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  line-height: 1.5;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
 .savings-banner {
   background: linear-gradient(135deg, rgba(0,245,255,0.1), rgba(180,79,255,0.1));
   border: 1px solid rgba(0,245,255,0.2);
