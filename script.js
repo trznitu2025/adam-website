@@ -674,20 +674,43 @@ function initSkillCards() {
    12. HOW STEPS
    ===================== */
 function initHowSteps() {
+  // New step cards
+  const stepCards = document.querySelectorAll('.step-card');
+  const fill = document.getElementById('steps-fill');
+
+  stepCards.forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 50, scale: 0.92 },
+      {
+        opacity: 1, y: 0, scale: 1,
+        duration: 0.6,
+        delay: i * 0.15,
+        ease: 'back.out(1.5)',
+        scrollTrigger: { trigger: '#how', start: 'top 80%' },
+        onStart: () => card.classList.add('visible'),
+      }
+    );
+  });
+
+  // Animate progress line
+  if (fill) {
+    ScrollTrigger.create({
+      trigger: '#how',
+      start: 'top 75%',
+      once: true,
+      onEnter: () => {
+        gsap.to(fill, { width: '100%', duration: 2, ease: 'power2.inOut', delay: 0.3 });
+      }
+    });
+  }
+
+  // Legacy step-items
   const steps = document.querySelectorAll('.step-item');
   steps.forEach((step, i) => {
     gsap.fromTo(step,
       { opacity: 0, y: 60 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.8,
-        delay: i * 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '#how',
-          start: 'top 85%',
-        }
-      }
+      { opacity: 1, y: 0, duration: 0.8, delay: i * 0.2, ease: 'power3.out',
+        scrollTrigger: { trigger: '#how', start: 'top 85%' } }
     );
   });
 }

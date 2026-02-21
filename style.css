@@ -880,48 +880,127 @@ section { position: relative; padding: 120px 24px; }
 
 /* ===== HOW IT WORKS ===== */
 #how { background: var(--bg2); }
-.steps-row {
-  display: flex;
-  gap: 0;
-  margin-top: 60px;
-  flex-wrap: wrap;
-  gap: 40px;
+/* ===== HOW IT WORKS V2 ===== */
+.steps-track { position: relative; margin-top: 60px; }
+.steps-progress-line {
+  position: absolute;
+  top: 48px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  z-index: 0;
 }
-.step-item {
+.steps-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  transition: width 1.5s ease;
+  box-shadow: 0 0 10px rgba(0,245,255,0.4);
+}
+.steps-row-v2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.step-card {
   flex: 1;
-  min-width: 220px;
+  min-width: 160px;
+  max-width: 220px;
+  text-align: center;
+  padding: 24px 16px;
   position: relative;
   opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s, transform 0.5s;
 }
-.step-num {
-  font-family: var(--font2);
-  font-size: 4rem;
-  font-weight: 900;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(0,245,255,0.2);
-  line-height: 1;
-  margin-bottom: 16px;
+.step-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-.step-content h3 {
+.step-icon-wrap {
+  position: relative;
+  width: 64px; height: 64px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass);
+  border: 1px solid rgba(0,245,255,0.2);
+  border-radius: 50%;
+}
+.step-icon { width: 28px; height: 28px; }
+.step-icon-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,245,255,0.15);
+  animation: pulse-ring 2.5s ease-in-out infinite;
+}
+.step-badge {
   font-family: var(--font2);
-  font-size: 1.2rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+.step-card h3 {
+  font-family: var(--font2);
+  font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 8px;
+  color: var(--text);
 }
-.step-content p {
-  font-size: 0.9rem;
+.step-card p {
+  font-size: 0.8rem;
   color: var(--text-muted);
-  line-height: 1.65;
+  line-height: 1.6;
 }
-.step-line {
-  position: absolute;
-  top: 28px;
-  right: -24px;
-  width: 48px;
-  height: 1px;
+.step-duration {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.72rem;
+  color: var(--cyan);
+  background: rgba(0,245,255,0.08);
+  border: 1px solid rgba(0,245,255,0.2);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-weight: 600;
+}
+.step-connector {
+  display: flex;
+  align-items: center;
+  padding-top: 32px;
+  flex-shrink: 0;
+}
+.connector-line {
+  width: 20px; height: 1px;
   background: linear-gradient(90deg, var(--cyan), var(--purple));
   opacity: 0.3;
 }
+.connector-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.5;
+}
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 0.1; }
+}
+
+/* Legacy steps (keep for fallback) */
+.steps-row { display: flex; gap: 40px; margin-top: 60px; flex-wrap: wrap; }
+.step-item { flex: 1; min-width: 220px; position: relative; opacity: 0; }
+.step-num { font-family: var(--font2); font-size: 4rem; font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(0,245,255,0.2); line-height: 1; margin-bottom: 16px; }
+.step-content h3 { font-family: var(--font2); font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+.step-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+.step-line { position: absolute; top: 28px; right: -24px; width: 48px; height: 1px; background: linear-gradient(90deg, var(--cyan), var(--purple)); opacity: 0.3; }
 
 /* ===== PRICING ===== */
 #pricing { background: var(--bg); }
@@ -1165,6 +1244,91 @@ section { position: relative; padding: 120px 24px; }
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.65;
+}
+/* New security icon style */
+.sec-icon-wrap {
+  position: relative;
+  width: 64px; height: 64px;
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,245,255,0.05);
+  border: 1px solid rgba(0,245,255,0.15);
+  border-radius: 16px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.security-card:hover .sec-icon-wrap {
+  background: rgba(0,245,255,0.1);
+  border-color: rgba(0,245,255,0.35);
+}
+.sec-icon-img {
+  width: 30px; height: 30px;
+  filter: drop-shadow(0 0 6px rgba(0,245,255,0.5));
+  transition: filter 0.3s;
+}
+.security-card:hover .sec-icon-img {
+  filter: drop-shadow(0 0 12px rgba(0,245,255,0.9));
+}
+.sec-icon-glow {
+  position: absolute;
+  inset: 0; border-radius: 16px;
+  background: radial-gradient(circle, rgba(0,245,255,0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.security-card:hover .sec-icon-glow { opacity: 1; }
+/* Security grid 3-col */
+.security-grid { grid-template-columns: repeat(3, 1fr); }
+
+/* Pricing urgency */
+.pricing-urgency {
+  display: inline-block;
+  background: rgba(255,100,0,0.12);
+  border: 1px solid rgba(255,100,0,0.35);
+  color: #ff9544;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  animation: pulse-urgency 2s ease-in-out infinite;
+}
+@keyframes pulse-urgency {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,100,0,0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(255,100,0,0); }
+}
+
+/* Contact ADAM presence */
+.contact-adam-presence {
+  position: relative;
+  width: 80px; height: 80px;
+  margin: 24px auto 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-adam-logo {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 12px rgba(0,245,255,0.6));
+  animation: float-logo 3s ease-in-out infinite;
+}
+.presence-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,245,255,0.3);
+  animation: pulse-presence 2s ease-in-out infinite;
+}
+.presence-ring-2 {
+  inset: -18px;
+  border-color: rgba(0,245,255,0.15);
+  animation-delay: 0.5s;
+}
+@keyframes pulse-presence {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 0.15; }
+}
+@keyframes float-logo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 /* ===== CONTACT ===== */

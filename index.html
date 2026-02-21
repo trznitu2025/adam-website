@@ -366,30 +366,75 @@
   <section id="how">
     <div class="section-container">
       <div class="section-eyebrow">&#x26A1; So einfach</div>
-      <h2 class="section-title">In 3 Schritten live</h2>
-      <div class="steps-row">
-        <div class="step-item" data-step="1">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h3>Erstgespr&auml;ch</h3>
-            <p>Kostenlos, unverbindlich. Wir analysieren Ihre Anforderungen und zeigen ADAM live.</p>
+      <h2 class="section-title">In 5 Schritten zu Ihrem KI-Assistenten</h2>
+      <p class="section-desc">Von der ersten Nachricht bis zum vollautomatischen Betrieb &mdash; in unter 2 Wochen.</p>
+      <div class="steps-track">
+        <div class="steps-progress-line"><div class="steps-progress-fill" id="steps-fill"></div></div>
+        <div class="steps-row-v2">
+
+          <div class="step-card" data-step="1">
+            <div class="step-icon-wrap">
+              <img src="assets/icons/chat.svg" class="step-icon" alt="Erstgespräch">
+              <div class="step-icon-ring"></div>
+            </div>
+            <div class="step-badge">01</div>
+            <h3>Kostenloses Erstgespr&auml;ch</h3>
+            <p>Wir analysieren Ihren Betrieb live und zeigen ADAM in Aktion &mdash; unverbindlich &amp; kostenlos.</p>
+            <div class="step-duration">~30 Min</div>
           </div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-item" data-step="2">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h3>Einrichtung</h3>
-            <p>Ihr eigener Server, WhatsApp-Anbindung, individuelle Konfiguration &mdash; in 5&ndash;10 Tagen.</p>
+
+          <div class="step-connector"><div class="connector-line"></div><div class="connector-dot"></div></div>
+
+          <div class="step-card" data-step="2">
+            <div class="step-icon-wrap">
+              <img src="assets/icons/settings.svg" class="step-icon" alt="Konfiguration">
+              <div class="step-icon-ring"></div>
+            </div>
+            <div class="step-badge">02</div>
+            <h3>Individuelle Konfiguration</h3>
+            <p>Ihr eigener Server in Deutschland. WhatsApp, Telegram oder Signal &mdash; nach Ihren W&uuml;nschen.</p>
+            <div class="step-duration">Tag 1&ndash;3</div>
           </div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-item" data-step="3">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h3>Live &amp; Lernen</h3>
-            <p>30 Tage Feintuning inklusive. ADAM lernt t&auml;glich dazu und wird immer besser.</p>
+
+          <div class="step-connector"><div class="connector-line"></div><div class="connector-dot"></div></div>
+
+          <div class="step-card" data-step="3">
+            <div class="step-icon-wrap">
+              <img src="assets/icons/rocket.svg" class="step-icon" alt="Go Live">
+              <div class="step-icon-ring"></div>
+            </div>
+            <div class="step-badge">03</div>
+            <h3>Go Live</h3>
+            <p>ADAM geht live auf Ihrem Messenger. Ab Tag 1 arbeitet er f&uuml;r Sie &mdash; rund um die Uhr.</p>
+            <div class="step-duration">Tag 5&ndash;10</div>
           </div>
+
+          <div class="step-connector"><div class="connector-line"></div><div class="connector-dot"></div></div>
+
+          <div class="step-card" data-step="4">
+            <div class="step-icon-wrap">
+              <img src="assets/icons/sparkles.svg" class="step-icon" alt="Feintuning">
+              <div class="step-icon-ring"></div>
+            </div>
+            <div class="step-badge">04</div>
+            <h3>30 Tage Feintuning</h3>
+            <p>Gemeinsam optimieren wir ADAM auf Ihre Arbeitsprozesse. Inklusive &mdash; ohne Aufpreis.</p>
+            <div class="step-duration">Tag 10&ndash;40</div>
+          </div>
+
+          <div class="step-connector"><div class="connector-line"></div><div class="connector-dot"></div></div>
+
+          <div class="step-card" data-step="5">
+            <div class="step-icon-wrap">
+              <img src="assets/icons/refresh.svg" class="step-icon" alt="Kontinuierlich">
+              <div class="step-icon-ring"></div>
+            </div>
+            <div class="step-badge">05</div>
+            <h3>Kontinuierlich besser</h3>
+            <p>ADAM lernt t&auml;glich dazu. Neue F&auml;higkeiten, Updates und Verbesserungen &mdash; automatisch.</p>
+            <div class="step-duration">Dauerhaft</div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -403,6 +448,7 @@
       <p class="section-desc">Keine versteckten Kosten. Keine &Uuml;berraschungen. Nur Ergebnisse.</p>
       <div class="pricing-wrapper">
         <div class="pricing-card glow-card" id="pricing-card">
+          <div class="pricing-urgency">&#x1F525; Noch <span id="slots-left">3</span> Pl&auml;tze im Februar</div>
           <div class="pricing-badge">&#x2705; Alles inklusive</div>
           <div class="pricing-block">
             <div class="pricing-block-label">Einmalig</div>
@@ -466,23 +512,39 @@
   <!-- SECURITY -->
   <section id="security">
     <div class="section-container">
-      <div class="section-eyebrow">&#x1F512; Datenschutz</div>
+      <div class="section-eyebrow">&#x1F512; Datenschutz &amp; Sicherheit</div>
       <h2 class="section-title">Ihre Daten. Ihre Kontrolle.</h2>
+      <p class="section-desc">ADAM l&auml;uft auf Ihrer Infrastruktur &mdash; keine Daten verlassen Deutschland ohne Ihre Erlaubnis.</p>
       <div class="security-grid">
         <div class="security-card" data-sec="0">
-          <div class="sec-icon">&#x1F1E9;&#x1F1EA;</div>
+          <div class="sec-icon-wrap"><img src="assets/icons/server.svg" class="sec-icon-img" alt="Server"><div class="sec-icon-glow"></div></div>
           <h3>Server in Deutschland</h3>
           <p>Ihr ADAM l&auml;uft ausschlie&szlig;lich auf einem dedizierten Server in Deutschland &mdash; keine Cloud, keine Drittanbieter.</p>
         </div>
         <div class="security-card" data-sec="1">
-          <div class="sec-icon">&#x1F512;</div>
+          <div class="sec-icon-wrap"><img src="assets/icons/shield.svg" class="sec-icon-img" alt="Datensicherheit"><div class="sec-icon-glow"></div></div>
           <h3>Ihre Daten geh&ouml;ren Ihnen</h3>
           <p>Vollst&auml;ndige Datensouver&auml;nit&auml;t. Kein Training auf Ihren Daten. Export und L&ouml;schung jederzeit m&ouml;glich.</p>
         </div>
         <div class="security-card" data-sec="2">
-          <div class="sec-icon">&#x2705;</div>
+          <div class="sec-icon-wrap"><img src="assets/icons/check-circle.svg" class="sec-icon-img" alt="DSGVO"><div class="sec-icon-glow"></div></div>
           <h3>DSGVO-konform</h3>
           <p>Vollst&auml;ndige Konformit&auml;t mit der Datenschutz-Grundverordnung. Auftragsverarbeitungsvertrag inklusive.</p>
+        </div>
+        <div class="security-card" data-sec="3">
+          <div class="sec-icon-wrap"><img src="assets/icons/eye-off.svg" class="sec-icon-img" alt="Kein Tracking"><div class="sec-icon-glow"></div></div>
+          <h3>Kein Tracking</h3>
+          <p>Keine Analyse-Tools, keine Werbecookies, kein Monitoring durch Dritte. Was bei Ihnen bleibt, bleibt bei Ihnen.</p>
+        </div>
+        <div class="security-card" data-sec="4">
+          <div class="sec-icon-wrap"><img src="assets/icons/file-lock.svg" class="sec-icon-img" alt="Verschlüsselung"><div class="sec-icon-glow"></div></div>
+          <h3>Ende-zu-Ende verschl&uuml;sselt</h3>
+          <p>Alle Kommunikation zwischen Ihnen und ADAM ist durchg&auml;ngig verschl&uuml;sselt &mdash; auf allen Messengern.</p>
+        </div>
+        <div class="security-card" data-sec="5">
+          <div class="sec-icon-wrap"><img src="assets/icons/cpu.svg" class="sec-icon-img" alt="Lokal"><div class="sec-icon-glow"></div></div>
+          <h3>Lokale KI-Modelle m&ouml;glich</h3>
+          <p>Auf Wunsch l&auml;uft die KI vollst&auml;ndig lokal auf Ihrem Server &mdash; ohne externe API-Calls.</p>
         </div>
       </div>
     </div>
@@ -535,7 +597,12 @@
           </a>
           <div class="contact-availability">
             <div class="avail-dot"></div>
-            <span>ADAM ist jetzt online</span>
+            <span>ADAM ist jetzt online &mdash; antwortet in &lt;30 Sek</span>
+          </div>
+          <div class="contact-adam-presence">
+            <img src="assets/adam-logo-v1.png" alt="ADAM" class="contact-adam-logo">
+            <div class="presence-ring"></div>
+            <div class="presence-ring presence-ring-2"></div>
           </div>
         </div>
       </div>
