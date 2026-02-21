@@ -67,6 +67,27 @@ function initNavbar() {
       }
     });
   });
+
+  // ---- SCROLL SPY ----
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"], #mobile-menu a[href^="#"]');
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navAnchors.forEach(a => {
+          a.classList.toggle('active',
+            a.getAttribute('href') === `#${id}` && !a.classList.contains('nav-cta'));
+        });
+      }
+    });
+  }, {
+    rootMargin: '-40% 0px -50% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => spyObserver.observe(s));
 }
 
 /* =====================

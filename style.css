@@ -107,8 +107,33 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   color: var(--text-muted);
   transition: color 0.3s;
+  position: relative;
 }
 .nav-links a:hover { color: var(--text); }
+/* Active scroll-spy indicator */
+.nav-links a.active:not(.nav-cta) {
+  color: var(--cyan);
+}
+.nav-links a.active:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  border-radius: 2px;
+  animation: nav-active-in 0.3s ease;
+}
+@keyframes nav-active-in {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+/* Mobile menu active state */
+#mobile-menu a.active {
+  color: var(--cyan);
+  padding-left: 8px;
+  border-left: 2px solid var(--cyan);
+}
 .nav-links .nav-cta {
   background: linear-gradient(135deg, var(--cyan), var(--purple));
   color: #000;
