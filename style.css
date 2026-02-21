@@ -286,6 +286,37 @@ img { max-width: 100%; display: block; }
   50% { opacity: 0; }
 }
 
+/* Messenger Badges */
+.messenger-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+  margin-top: -24px;
+}
+.messenger-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.messenger-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.messenger-wa  { background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.4); color: #25d366; }
+.messenger-tg  { background: rgba(0,136,204,0.15);  border-color: rgba(0,136,204,0.4);  color: #29b6f6; }
+.messenger-sg  { background: rgba(59,125,221,0.15); border-color: rgba(59,125,221,0.4); color: #6ea7ff; }
+.messenger-dc  { background: rgba(88,101,242,0.15); border-color: rgba(88,101,242,0.4); color: #a3aaff; }
+.messenger-more { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); color: var(--text-muted); }
+
 /* Stats */
 .hero-stats {
   display: flex;

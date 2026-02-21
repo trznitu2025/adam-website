@@ -282,9 +282,11 @@ function initTypingEffect() {
 
   const phrases = [
     'Automatisiert. Intelligent. Immer verfügbar.',
-    'Ihr KI-Assistent auf WhatsApp.',
+    'Auf WhatsApp, Telegram, Signal & mehr.',
     'Spart Ihnen 40.200 € pro Jahr.',
     '24/7 für Sie im Einsatz.',
+    'Ihr Assistent — auf jedem Messenger.',
+    'Nie wieder Anfragen verpassen.',
   ];
   let phraseIdx = 0;
   let charIdx = 0;
