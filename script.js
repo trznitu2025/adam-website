@@ -271,6 +271,73 @@ function initSkillOrbs() {
     // Start slightly offset so they don't all move at once
     gsap.delayedCall(1.5 + delay + Math.random() * 2, randomFlight);
   });
+
+  // ── SPIDERWEB CANVAS ──────────────────────────────────────────
+  const webCanvas = document.getElementById('web-canvas');
+  if (!webCanvas) return;
+  const ctx = webCanvas.getContext('2d');
+
+  function resizeWebCanvas() {
+    webCanvas.width  = window.innerWidth;
+    webCanvas.height = window.innerHeight;
+  }
+  resizeWebCanvas();
+  window.addEventListener('resize', resizeWebCanvas);
+
+  const MAX_DIST = Math.min(window.innerWidth * 0.28, 320);
+
+  function drawWeb() {
+    // Re-read max dist on each frame (responsive)
+    const maxD = Math.min(window.innerWidth * 0.28, 320);
+    webCanvas.width  = window.innerWidth;
+    webCanvas.height = window.innerHeight;
+
+    ctx.clearRect(0, 0, webCanvas.width, webCanvas.height);
+
+    // Collect centre positions of all visible orbs
+    const positions = [];
+    orbs.forEach(orb => {
+      const rect = orb.getBoundingClientRect();
+      if (rect.width === 0) return; // not yet visible
+      positions.push({
+        x: rect.left + rect.width  / 2,
+        y: rect.top  + rect.height / 2,
+      });
+    });
+
+    // Draw lines between every pair within maxD
+    for (let i = 0; i < positions.length; i++) {
+      for (let j = i + 1; j < positions.length; j++) {
+        const dx = positions[i].x - positions[j].x;
+        const dy = positions[i].y - positions[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > maxD) continue;
+
+        const alpha = (1 - dist / maxD) * 0.45; // max 45% opacity
+
+        // Elegant gradient line: cyan → purple
+        const grad = ctx.createLinearGradient(
+          positions[i].x, positions[i].y,
+          positions[j].x, positions[j].y
+        );
+        grad.addColorStop(0,   `rgba(0,245,255,${alpha})`);
+        grad.addColorStop(0.5, `rgba(120,80,255,${alpha * 0.7})`);
+        grad.addColorStop(1,   `rgba(180,79,255,${alpha})`);
+
+        ctx.beginPath();
+        ctx.moveTo(positions[i].x, positions[i].y);
+        ctx.lineTo(positions[j].x, positions[j].y);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth   = (1 - dist / maxD) * 1.2;
+        ctx.stroke();
+      }
+    }
+
+    requestAnimationFrame(drawWeb);
+  }
+
+  // Start after orbs appear
+  setTimeout(drawWeb, 2500);
 }
 
 /* =====================
