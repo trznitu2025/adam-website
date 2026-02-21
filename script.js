@@ -1,4 +1,4 @@
-/* ===========================
+ï»¿/* ===========================
    ADAM â€” Ultra-Modern Script
    Three.js + GSAP ScrollTrigger
    =========================== */
@@ -1026,7 +1026,7 @@ function toggleFaq(btn) {
 function calcROI() {
   const hours = parseInt(document.getElementById('roi-hours')?.value || 10);
   const saved = Math.round(hours * 0.8);
-  const hourlyRate = 20; // Sekretärin inkl. Lohnnebenkosten ~20€/h
+  const hourlyRate = 20; // Sekretï¿½rin inkl. Lohnnebenkosten ~20ï¿½/h
   const yearlyValue = saved * 52 * hourlyRate;
   const el_h = document.getElementById('roi-hours-val');
   const el_s = document.getElementById('roi-saved');
@@ -1040,7 +1040,7 @@ function calcROI() {
    CHAT DEMO ANIMATION
    ===================== */
 function initChatDemo() {
-  const reply = `? Angebot erstellt!\n\nPos. 1 ï¿½ GK-Wï¿½nde 3.OG: 280mï¿½ ï¿½ 28,50ï¿½ = 7.980ï¿½\nPos. 2 ï¿½ Deckenabhï¿½ngung: 280mï¿½ ï¿½ 22ï¿½ = 6.160ï¿½\n\n*Gesamt: 14.140 ï¿½ netto*\n\nSoll ich als Entwurf in Lexoffice speichern?`;
+  const reply = "&#x2705; Angebot erstellt!<br><br>Pos. 1 &mdash; GK-W&auml;nde 3.OG: 280m&sup2; &times; 28,50&euro; = 7.980&euro;<br>Pos. 2 &mdash; Deckenabh&auml;ngung: 280m&sup2; &times; 22&euro; = 6.160&euro;<br><br><strong>Gesamt: 14.140 &euro; netto</strong><br><br>Soll ich als Entwurf in Lexoffice speichern?";
   const typingEl = document.getElementById('adam-typing');
   if (!typingEl) return;
   setTimeout(() => {
