@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPricingCard();
   initSecurityCards();
   initParallax();
+  initKidsSection();
   initContactForm();
   initAvailTimer();
   setTimeout(() => ScrollTrigger.refresh(), 500);
@@ -932,8 +933,8 @@ function initAvailTimer() {
   if (!el) return;
 
   // Simulate live response counter: count down, "reply", reset
-  let current = Math.floor(Math.random() * 12) + 14; // 14–25
-  const target = Math.floor(Math.random() * 4) + 3;   // 3–6 (min before "reply")
+  let current = Math.floor(Math.random() * 12) + 14; // 14ï¿½25
+  const target = Math.floor(Math.random() * 4) + 3;   // 3ï¿½6 (min before "reply")
   el.textContent = current;
 
   function tick() {
@@ -941,7 +942,7 @@ function initAvailTimer() {
       // "Replied" flash
       el.style.opacity = '0';
       setTimeout(() => {
-        current = Math.floor(Math.random() * 10) + 16; // reset 16–25
+        current = Math.floor(Math.random() * 10) + 16; // reset 16ï¿½25
         el.textContent = current;
         el.style.opacity = '1';
         setTimeout(tick, Math.random() * 600 + 800);
@@ -962,4 +963,38 @@ function initAvailTimer() {
     }
   }
   setTimeout(tick, 1200);
+}
+
+/* =====================
+   ADAM 4 KIDS ANIMATIONS
+   ===================== */
+function initKidsSection() {
+  const cards = document.querySelectorAll('.kids-feature-card');
+  const subjs = document.querySelectorAll('.kids-subj');
+
+  cards.forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0,
+        duration: 0.6,
+        delay: i * 0.1,
+        ease: 'back.out(1.4)',
+        scrollTrigger: { trigger: '#kids', start: 'top 80%', once: true }
+      }
+    );
+  });
+
+  subjs.forEach((subj, i) => {
+    gsap.fromTo(subj,
+      { opacity: 0, scale: 0.8 },
+      {
+        opacity: 1, scale: 1,
+        duration: 0.4,
+        delay: i * 0.06,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.kids-subjects', start: 'top 90%', once: true }
+      }
+    );
+  });
 }
