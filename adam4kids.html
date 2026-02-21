@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADAM 4 Kids — KI-Nachhilfe auf WhatsApp</title>
+  <meta name="description" content="ADAM hilft Ihrem Kind bei Hausaufgaben auf WhatsApp. Täglich, mehrsprachig, in allen Fächern. Mit täglichem Eltern-Bericht." />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --text: #e8eaf0;
+      --text-muted: rgba(232,234,240,0.55);
+      --cyan: #00f5ff;
+      --green: #00ff8c;
+      --purple: #7c3aed;
+      --radius: 20px;
+      --radius-sm: 14px;
+      --font1: 'Inter', sans-serif;
+      --font2: 'Space Grotesk', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font1);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,255,140,0.1);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 44px; filter: drop-shadow(0 0 10px rgba(0,255,140,0.5)); }
+    .nav-logo-text { font-family: var(--font2); font-size: 1.1rem; font-weight: 700; color: var(--green); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--green), #00c97a);
+      color: #000;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: opacity 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; transform: scale(1.03); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-orb {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,140,0.07) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,255,140,0.08);
+      border: 1px solid rgba(0,255,140,0.25);
+      color: var(--green);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: var(--font2);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--green), #00c97a);
+      color: #000;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: opacity 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: scale(1.02); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: var(--text);
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(0,255,140,0.4); transform: scale(1.02); }
+    .hero-stats {
+      display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-family: var(--font2); font-size: 2.2rem; font-weight: 900; color: var(--green); display: block; }
+    .stat-label { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* SECTIONS */
+    section { padding: 100px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(0,255,140,0.08);
+      border: 1px solid rgba(0,255,140,0.2);
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    h2.section-title {
+      font-family: var(--font2);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+
+    /* HOW IT WORKS */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .how-card {
+      background: var(--glass);
+      border: 1px solid rgba(0,255,140,0.1);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .how-card:hover { border-color: rgba(0,255,140,0.3); transform: translateY(-4px); }
+    .how-num {
+      font-family: var(--font2);
+      font-size: 3rem; font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,255,140,0.25);
+      margin-bottom: 16px;
+    }
+    .how-card h3 { font-family: var(--font2); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .how-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* FEATURES */
+    .features-bg { background: linear-gradient(180deg, var(--bg) 0%, rgba(0,255,140,0.02) 50%, var(--bg) 100%); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--glass);
+      border: 1px solid rgba(0,255,140,0.1);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      border-color: rgba(0,255,140,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,255,140,0.06);
+    }
+    .feat-icon {
+      width: 52px; height: 52px;
+      background: rgba(0,255,140,0.06);
+      border: 1px solid rgba(0,255,140,0.2);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 { font-family: var(--font2); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* SUBJECTS */
+    .subjects-wrap { text-align: center; padding: 80px 24px; }
+    .subjects-grid {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center;
+      max-width: 800px;
+      margin: 40px auto 0;
+    }
+    .subj-tag {
+      font-size: 0.88rem; font-weight: 600;
+      color: rgba(0,255,140,0.85);
+      background: rgba(0,255,140,0.06);
+      border: 1px solid rgba(0,255,140,0.2);
+      padding: 10px 20px;
+      border-radius: 100px;
+      transition: background 0.3s, transform 0.2s;
+      cursor: default;
+    }
+    .subj-tag:hover { background: rgba(0,255,140,0.12); transform: scale(1.05); }
+
+    /* PRICING */
+    .pricing-wrap {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 48px;
+    }
+    .price-card {
+      background: var(--glass);
+      border: 1px solid rgba(0,255,140,0.2);
+      border-radius: var(--radius);
+      padding: 40px;
+      flex: 1; min-width: 280px; max-width: 380px;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(0,255,140,0.05);
+    }
+    .price-card.featured {
+      border-color: rgba(0,255,140,0.4);
+      box-shadow: 0 0 60px rgba(0,255,140,0.1);
+    }
+    .price-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--green), #00c97a);
+      color: #000;
+      font-size: 0.72rem; font-weight: 800;
+      padding: 4px 14px; border-radius: 100px;
+      margin-bottom: 20px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .price-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+    .price-amount { font-family: var(--font2); font-size: 3rem; font-weight: 900; color: var(--green); margin: 8px 0; }
+    .price-amount span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+    .price-list { list-style: none; text-align: left; margin: 24px 0; }
+    .price-list li { font-size: 0.88rem; padding: 6px 0; border-bottom: 1px solid var(--glass-border); color: var(--text-muted); }
+    .price-list li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+
+    /* CONTACT */
+    .contact-section { background: var(--bg); }
+    .contact-form-wrap {
+      background: var(--glass);
+      border: 1px solid rgba(0,255,140,0.12);
+      border-radius: var(--radius);
+      padding: 48px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: var(--font1);
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: rgba(0,255,140,0.4); }
+    .form-row { display: flex; gap: 16px; }
+    .form-row .form-group { flex: 1; }
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--green), #00c97a);
+      color: #000;
+      font-weight: 700; font-size: 1rem;
+      border: none; border-radius: 100px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      font-family: var(--font1);
+    }
+    .submit-btn:hover { opacity: 0.88; }
+    .form-success { display: none; text-align: center; padding: 20px; color: var(--green); font-weight: 600; }
+    .form-error { display: none; text-align: center; padding: 12px; color: #ff8080; font-size: 0.85rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--green); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .how-grid, .features-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .how-grid, .features-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 32px; }
+      .contact-form-wrap { padding: 28px 20px; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="assets/adam-logo-v1.png" alt="ADAM">
+      <span class="nav-logo-text">ADAM 4 Kids</span>
+    </a>
+    <a href="#contact" class="nav-cta">Jetzt anfragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-orb"></div>
+    <div style="position:relative;z-index:1;max-width:800px;">
+      <div class="hero-badge">&#x1F393; KI-Nachhilfe der nächsten Generation</div>
+      <h1>Ihr Kind hat eine Frage?<br><span class="highlight">ADAM antwortet in Sekunden.</span></h1>
+      <p>Kein Nachhilfelehrer mehr gesucht. ADAM hilft Ihrem Kind täglich bei Hausaufgaben &mdash; auf WhatsApp, in allen Fächern, mehrsprachig. Mit täglichem Bericht für Sie als Elternteil.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          &#x1F4E9; Jetzt kostenlos testen
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#features" class="btn-secondary">&#x25B6; Wie es funktioniert</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Immer verfügbar</span></div>
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Schulfächer</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Sprachen</span></div>
+        <div class="stat"><span class="stat-num">&lt;30 Sek</span><span class="stat-label">Antwortzeit</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <div class="eyebrow">&#x26A1; So einfach</div>
+      <h2 class="section-title">In 3 Schritten zur Nachhilfe</h2>
+      <p class="section-desc">Keine App, keine Anmeldung für Ihr Kind. Einfach WhatsApp öffnen und losschreiben.</p>
+      <div class="how-grid">
+        <div class="how-card fade-in">
+          <div class="how-num">01</div>
+          <h3>Foto oder Text schicken</h3>
+          <p>Ihr Kind schickt einfach ein Foto der Aufgabe oder tippt die Frage &mdash; auf WhatsApp, wie eine normale Nachricht.</p>
+        </div>
+        <div class="how-card fade-in">
+          <div class="how-num">02</div>
+          <h3>ADAM erklärt den Lösungsweg</h3>
+          <p>ADAM analysiert die Aufgabe und erklärt Schritt für Schritt &mdash; aber gibt nie das Ergebnis direkt, damit Ihr Kind wirklich lernt.</p>
+        </div>
+        <div class="how-card fade-in">
+          <div class="how-num">03</div>
+          <h3>Sie bekommen den Bericht</h3>
+          <p>Jeden Abend erhalten Sie eine kurze Zusammenfassung: Was hat Ihr Kind heute gelernt? Wie lange war es aktiv?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="features-bg">
+    <div class="container">
+      <div class="eyebrow">&#x2728; Features</div>
+      <h2 class="section-title">Mehr als nur Nachhilfe</h2>
+      <p class="section-desc">ADAM ist ein vollständiger Lernbegleiter &mdash; immer verfügbar, immer geduldig, immer pädagogisch korrekt.</p>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feat-icon">&#x1F4F8;</div>
+          <h3>Foto-Aufgaben sofort erklärt</h3>
+          <p>Foto schicken reicht. ADAM erkennt Aufgaben aus Mathe, Physik, Chemie &mdash; handschriftlich oder gedruckt.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feat-icon">&#x1F514;</div>
+          <h3>Täglicher Hausaufgaben-Reminder</h3>
+          <p>Jeden Nachmittag um 17 Uhr fragt ADAM automatisch: "Hast du heute Hausaufgaben?" &mdash; bevor das Kind's vergisst.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feat-icon">&#x1F4CA;</div>
+          <h3>Täglicher Eltern-Bericht</h3>
+          <p>Sie sehen täglich: Wie oft hat Ihr Kind gelernt? Welche Fächer? Wann? Direkt auf WhatsApp &mdash; kein Login nötig.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feat-icon">&#x1F30D;</div>
+          <h3>Deutsch · Englisch · Rumänisch</h3>
+          <p>ADAM kommuniziert in der Sprache Ihres Kindes. Ideal für mehrsprachige Familien oder für Sprachübungen.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feat-icon">&#x1F9E0;</div>
+          <h3>Sokrates-Methode</h3>
+          <p>ADAM gibt keine Antworten &mdash; er stellt Fragen. So kommt Ihr Kind selbst auf die Lösung und merkt sich den Stoff wirklich.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feat-icon">&#x1F512;</div>
+          <h3>Eltern-Kontrolle total</h3>
+          <p>Sie bestimmen was ADAM darf und was nicht. Themen, Fächer, Sprache &mdash; alles individuell konfigurierbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBJECTS -->
+  <section class="subjects-wrap">
+    <div class="eyebrow">&#x1F4DA; Alle Fächer</div>
+    <h2 class="section-title" style="margin-top:16px;">Den kompletten Lehrplan im Griff</h2>
+    <div class="subjects-grid">
+      <span class="subj-tag">📐 Mathematik</span>
+      <span class="subj-tag">📖 Deutsch</span>
+      <span class="subj-tag">🇬🇧 Englisch</span>
+      <span class="subj-tag">⚗️ Chemie</span>
+      <span class="subj-tag">🔬 Physik</span>
+      <span class="subj-tag">🌍 Geographie</span>
+      <span class="subj-tag">📜 Geschichte</span>
+      <span class="subj-tag">💻 Informatik</span>
+      <span class="subj-tag">🌱 Biologie</span>
+      <span class="subj-tag">🎨 Kunst (Theorie)</span>
+      <span class="subj-tag">🇫🇷 Französisch</span>
+      <span class="subj-tag">🇷🇴 Rumänisch</span>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container" style="text-align:center;">
+      <div class="eyebrow">💳 Preise</div>
+      <h2 class="section-title">Transparent. Fair. Kein Abo-Stress.</h2>
+      <p class="section-desc" style="margin:16px auto 48px;">Kein Vertrag. Kein verstecktes Klein­gedrucktes. Nur Ergebnisse.</p>
+      <div class="pricing-wrap">
+        <div class="price-card featured">
+          <div class="price-badge">⭐ Empfohlen</div>
+          <div class="price-label">Monatlich</div>
+          <div class="price-amount">49 <span>€/Monat</span></div>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;">Pro Kind · jederzeit kündbar</p>
+          <ul class="price-list">
+            <li>Unbegrenzte Nachrichten</li>
+            <li>Alle Schulfächer</li>
+            <li>Täglicher Eltern-Bericht</li>
+            <li>Hausaufgaben-Reminder</li>
+            <li>3 Sprachen (DE/EN/RO)</li>
+            <li>Eltern-Konfiguration</li>
+          </ul>
+          <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;margin-top:8px;">Jetzt starten</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Einmalig testen</div>
+          <div class="price-amount" style="color:var(--cyan);">0 <span>€</span></div>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;">7 Tage kostenlos · kein Risiko</p>
+          <ul class="price-list">
+            <li>1 Woche vollen Zugang</li>
+            <li>Kein Kreditkarte nötig</li>
+            <li>Danach entscheiden Sie</li>
+          </ul>
+          <a href="#contact" class="btn-secondary" style="width:100%;justify-content:center;margin-top:28px;">Kostenlos testen</a>
+        </div>
+      </div>
+      <p style="margin-top:32px;font-size:0.8rem;color:var(--text-muted);">Ab 10 Jahren empfohlen · Preis für Geschwister auf Anfrage</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;">
+        <div class="eyebrow">📩 Kontakt</div>
+        <h2 class="section-title">Jetzt kostenlos starten</h2>
+        <p class="section-desc" style="margin:16px auto 0;">Füllen Sie das Formular aus &mdash; wir melden uns innerhalb von 24 Stunden und richten alles ein.</p>
+      </div>
+      <div class="contact-form-wrap">
+        <form id="kids-form">
+          <input type="hidden" name="_subject" value="🎓 ADAM 4 Kids Anfrage" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ihr Name</label>
+              <input type="text" name="name" placeholder="Max Mustermann" required />
+            </div>
+            <div class="form-group">
+              <label>Ihre E-Mail</label>
+              <input type="email" name="email" placeholder="max@gmail.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp-Nummer Ihres Kindes</label>
+            <input type="tel" name="kind_nummer" placeholder="+49 151 ..." />
+          </div>
+          <div class="form-group">
+            <label>Klasse &amp; Fächer (optional)</label>
+            <input type="text" name="klasse" placeholder="z.B. Klasse 8 · Mathe, Deutsch, Englisch" />
+          </div>
+          <div class="form-group">
+            <label>Ihre Nachricht (optional)</label>
+            <textarea name="message" rows="3" placeholder="Haben Sie Fragen oder besondere Wünsche?"></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="kids-submit-btn">
+            &#x1F4E8; Kostenlos anfragen
+          </button>
+          <div id="kids-success" class="form-success">✅ Nachricht gesendet! Wir melden uns bald bei Ihnen.</div>
+          <div id="kids-error" class="form-error">⚠️ Fehler. Bitte direkt an <a href="mailto:a.d.a.m@agentmail.to">a.d.a.m@agentmail.to</a> schreiben.</div>
+        </form>
+        <div style="text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--glass-border);">
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">Oder direkt:</p>
+          <a href="https://wa.me/492118823529?text=Hallo%20ADAM%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ADAM%204%20Kids." style="display:inline-flex;align-items:center;gap:8px;color:var(--green);font-weight:700;text-decoration:none;font-size:0.95rem;">
+            📱 WhatsApp: +49 211 88 233 529
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <strong>ADAM 4 Kids</strong> — Ein Produkt von ADAM KI-Assistent | <a href="index.html">Zurück zur Hauptseite</a> | <a href="mailto:a.d.a.m@agentmail.to">a.d.a.m@agentmail.to</a></p>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form submit
+    document.getElementById('kids-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('kids-submit-btn');
+      btn.textContent = 'Wird gesendet…'; btn.disabled = true;
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/a.d.a.m@agentmail.to', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(e.target)
+        });
+        if (res.ok) {
+          btn.style.display = 'none';
+          document.getElementById('kids-success').style.display = 'block';
+        } else throw new Error();
+      } catch {
+        btn.textContent = '📨 Kostenlos anfragen'; btn.disabled = false;
+        document.getElementById('kids-error').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
