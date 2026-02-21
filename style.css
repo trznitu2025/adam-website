@@ -761,6 +761,22 @@ section { position: relative; padding: 120px 24px; }
   border-color: rgba(0,245,255,0.3);
 }
 .skill-emoji { font-size: 1.8rem; line-height: 1; }
+.skill-icon-img {
+  width: 36px; height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(0,245,255,0.6));
+  transition: filter 0.3s, transform 0.3s;
+}
+.skill-card:hover .skill-icon-img {
+  filter: drop-shadow(0 0 12px rgba(0,245,255,0.9));
+  transform: scale(1.1);
+}
+.skill-orb img {
+  width: 26px; height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(0,245,255,0.7));
+  pointer-events: none;
+}
 .skill-icon-glow {
   position: absolute;
   inset: -4px;
