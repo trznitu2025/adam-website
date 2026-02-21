@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSecurityCards();
   initParallax();
   initContactForm();
+  initAvailTimer();
   setTimeout(() => ScrollTrigger.refresh(), 500);
 });
 
@@ -922,3 +923,43 @@ document.querySelectorAll('.section-desc').forEach(el => {
   );
 });
 
+
+/* =====================
+   AVAIL TIMER
+   ===================== */
+function initAvailTimer() {
+  const el = document.getElementById('avail-sec');
+  if (!el) return;
+
+  // Simulate live response counter: count down, "reply", reset
+  let current = Math.floor(Math.random() * 12) + 14; // 14–25
+  const target = Math.floor(Math.random() * 4) + 3;   // 3–6 (min before "reply")
+  el.textContent = current;
+
+  function tick() {
+    if (current <= target) {
+      // "Replied" flash
+      el.style.opacity = '0';
+      setTimeout(() => {
+        current = Math.floor(Math.random() * 10) + 16; // reset 16–25
+        el.textContent = current;
+        el.style.opacity = '1';
+        setTimeout(tick, Math.random() * 600 + 800);
+      }, 400);
+    } else {
+      // Count down by 1
+      el.style.opacity = '0';
+      setTimeout(() => {
+        current--;
+        el.textContent = current;
+        el.style.opacity = '1';
+        // Slower near the end, faster in the middle
+        const delay = current < 8
+          ? Math.random() * 400 + 300
+          : Math.random() * 700 + 600;
+        setTimeout(tick, delay);
+      }, 120);
+    }
+  }
+  setTimeout(tick, 1200);
+}
