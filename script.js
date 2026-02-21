@@ -233,7 +233,7 @@ function initSkillOrbs() {
     const driftX3 = (Math.random() - 0.5) * 60;
     const driftY3 = (Math.random() - 0.5) * 40;
 
-    const duration = 4 + Math.random() * 4;
+    const duration = 8 + Math.random() * 2;
     const delay = i * 0.1;
 
     gsap.set(orb, {
@@ -263,7 +263,7 @@ function initSkillOrbs() {
       gsap.to(orb, {
         left: nx + '%',
         top: ny + '%',
-        duration: duration * (0.6 + Math.random() * 0.5),
+        duration: duration,
         ease: 'power1.inOut',
         onComplete: randomFlight,
       });
