@@ -557,7 +557,14 @@
       <h2 class="section-title">Bereit f&uuml;r die Zukunft?</h2>
       <p class="section-desc">Buchen Sie Ihr kostenloses Erstgespr&auml;ch &mdash; oder schreiben Sie uns direkt.</p>
       <div class="contact-wrapper">
-        <form class="contact-form" id="contact-form" action="mailto:a.d.a.m@agentmail.to" method="get">
+        <form class="contact-form" id="contact-form">
+          <!-- Formsubmit config -->
+          <input type="hidden" name="_subject" value="🤖 Neue ADAM Anfrage von der Website" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <!-- Honeypot spam protection -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
           <div class="form-row">
             <div class="form-group">
               <label>Ihr Name</label>
@@ -576,10 +583,16 @@
             <label>Ihre Nachricht</label>
             <textarea name="message" rows="4" placeholder="Erz&auml;hlen Sie uns von Ihrem Unternehmen..." required></textarea>
           </div>
-          <button type="submit" class="btn-primary magnetic-btn form-submit">
-            <span>Nachricht senden</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          <button type="submit" class="btn-primary magnetic-btn form-submit" id="form-submit-btn">
+            <span id="form-btn-text">Nachricht senden</span>
+            <svg id="form-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           </button>
+          <div id="form-success" class="form-success-msg" style="display:none">
+            &#x2705; Nachricht gesendet! ADAM meldet sich bald bei Ihnen.
+          </div>
+          <div id="form-error" class="form-error-msg" style="display:none">
+            &#x26A0;&#xFE0F; Fehler beim Senden. Bitte direkt an <a href="mailto:a.d.a.m@agentmail.to">a.d.a.m@agentmail.to</a> schreiben.
+          </div>
         </form>
         <div class="contact-direct">
           <h3>Direkt erreichbar</h3>

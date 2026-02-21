@@ -816,23 +816,47 @@ function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const btn = form.querySelector('.form-submit span');
-    if (btn) {
-      btn.textContent = '✓ Gesendet!';
-      gsap.to(form.querySelector('.form-submit'), {
-        background: 'linear-gradient(135deg, #00cc88, #00f5cc)',
-        duration: 0.5,
+
+    const btn      = document.getElementById('form-submit-btn');
+    const btnText  = document.getElementById('form-btn-text');
+    const btnIcon  = document.getElementById('form-btn-icon');
+    const success  = document.getElementById('form-success');
+    const errorMsg = document.getElementById('form-error');
+
+    // Loading state
+    btn.disabled = true;
+    btnText.textContent = 'Wird gesendet…';
+    btnIcon.style.display = 'none';
+    gsap.to(btn, { opacity: 0.7, duration: 0.3 });
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('https://formsubmit.co/ajax/a.d.a.m@agentmail.to', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
       });
+
+      if (res.ok) {
+        // Success
+        gsap.to(btn, { opacity: 0, duration: 0.3, onComplete: () => { btn.style.display = 'none'; } });
+        success.style.display = 'flex';
+        gsap.fromTo(success, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
+        form.querySelectorAll('input:not([type=hidden]), textarea').forEach(el => el.value = '');
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      // Error fallback
+      btn.disabled = false;
+      btnText.textContent = 'Nachricht senden';
+      btnIcon.style.display = '';
+      gsap.to(btn, { opacity: 1, duration: 0.3 });
+      errorMsg.style.display = 'flex';
+      gsap.fromTo(errorMsg, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 });
     }
-    // Open mailto
-    const name = form.querySelector('[name="name"]').value;
-    const email = form.querySelector('[name="email"]').value;
-    const message = form.querySelector('[name="message"]').value;
-    const subject = encodeURIComponent('ADAM Erstgespräch — ' + name);
-    const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\n${message}`);
-    window.location.href = `mailto:a.d.a.m@agentmail.to?subject=${subject}&body=${body}`;
   });
 
   // Animate form in
