@@ -1033,7 +1033,7 @@ function calcROI() {
   const el_v = document.getElementById('roi-value');
   if (el_h) el_h.textContent = hours + 'h';
   if (el_s) el_s.textContent = saved + 'h/Woche';
-  if (el_v) el_v.textContent = yearlyValue.toLocaleString('de-DE') + ' �/Jahr';
+  if (el_v) el_v.innerHTML = yearlyValue.toLocaleString('de-DE') + ' &euro;/Jahr';
 }
 
 /* =====================
