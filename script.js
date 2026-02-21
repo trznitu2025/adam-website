@@ -1026,7 +1026,7 @@ function toggleFaq(btn) {
 function calcROI() {
   const hours = parseInt(document.getElementById('roi-hours')?.value || 10);
   const saved = Math.round(hours * 0.8);
-  const hourlyRate = 52; // avg ï¿½/Stunde
+  const hourlyRate = 20; // Sekretärin inkl. Lohnnebenkosten ~20€/h
   const yearlyValue = saved * 52 * hourlyRate;
   const el_h = document.getElementById('roi-hours-val');
   const el_s = document.getElementById('roi-saved');
