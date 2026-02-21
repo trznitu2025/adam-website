@@ -110,6 +110,20 @@
       </div>
     </div>
 
+    <!-- Chat Demo Mockup -->
+    <div class="hero-chat-demo" id="hero-chat-demo">
+      <div class="chat-header">
+        <div class="chat-avatar"><img src="assets/adam-logo-v1.png" alt="ADAM"></div>
+        <div class="chat-info"><strong>ADAM</strong><span class="chat-online">&#x25CF; Online</span></div>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg user">Schreib mir schnell ein Angebot f&uuml;r Trockenbau 3.OG, 280m&sup2;</div>
+        <div class="chat-msg adam" id="adam-typing">
+          <span class="typing-dots"><span></span><span></span><span></span></span>
+        </div>
+      </div>
+    </div>
+
     <div class="hero-scroll-hint">
       <div class="scroll-wheel"><div class="scroll-dot"></div></div>
       <span>Scrollen</span>
@@ -503,6 +517,18 @@
           <div class="mini-row"><span>Vollzeit-Sekretariat</span><span class="mini-bad">~4.000 &euro;/M</span></div>
           <div class="mini-row highlight-row"><span>ADAM</span><span class="mini-good">650 &euro;/M</span></div>
           <div class="mini-savings"><span>Sie sparen</span><span class="mini-savings-num">40.200 &euro;/Jahr</span></div>
+
+          <div class="roi-calc">
+            <div class="roi-calc-title">&#x1F9EE; Ihr pers&ouml;nlicher ROI</div>
+            <div class="roi-row">
+              <label>Stunden/Woche f&uuml;r B&uuml;roarbeit:</label>
+              <input type="range" id="roi-hours" min="2" max="40" value="10" oninput="calcROI()">
+              <span id="roi-hours-val">10h</span>
+            </div>
+            <div class="roi-result">
+              ADAM spart Ihnen <strong id="roi-saved">8h/Woche</strong> &mdash; das sind <strong id="roi-value" class="roi-money">4.160 &euro;/Jahr</strong> an Arbeitszeit.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -546,6 +572,104 @@
           <h3>Lokale KI-Modelle m&ouml;glich</h3>
           <p>Auf Wunsch l&auml;uft die KI vollst&auml;ndig lokal auf Ihrem Server &mdash; ohne externe API-Calls.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-container">
+      <div class="section-eyebrow">&#x2B50; Kundenstimmen</div>
+      <h2 class="section-title">Was Unternehmer &uuml;ber ADAM sagen</h2>
+      <p class="section-desc">Echte Ergebnisse von Betrieben, die ADAM bereits im Einsatz haben.</p>
+      <div class="testi-grid">
+
+        <div class="testi-card" data-t="0">
+          <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+          <p class="testi-quote">&bdquo;ADAM schreibt mir Angebote in 30 Sekunden. Fr&uuml;her hat das 45 Minuten gekostet. Ich hab die erste Woche nicht geglaubt, dass das wirklich funktioniert.&ldquo;</p>
+          <div class="testi-person">
+            <div class="testi-avatar">MK</div>
+            <div><strong>Markus K.</strong><span>Trockenbauunternehmer, D&uuml;sseldorf</span></div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-t="1">
+          <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+          <p class="testi-quote">&bdquo;Meine Mitarbeiter schicken ADAM Fotos vom Aufma&szlig; &mdash; der macht das in Minuten fertig. Wir sparen locker 3 Stunden pro Baustelle. Einrichtung war in einer Woche erledigt.&ldquo;</p>
+          <div class="testi-person">
+            <div class="testi-avatar">SH</div>
+            <div><strong>Stefan H.</strong><span>GF Innenausbau GmbH, NRW</span></div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-t="2">
+          <div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+          <p class="testi-quote">&bdquo;Ich hab ADAM gefragt ob er Rechnungen aus Lexoffice abrufen kann. Er hat es einfach gemacht. Kein anderes Tool kann das &uuml;ber WhatsApp. Absolut beeindruckend.&ldquo;</p>
+          <div class="testi-person">
+            <div class="testi-avatar">TF</div>
+            <div><strong>Thomas F.</strong><span>Selbst&auml;ndiger Dienstleister, K&ouml;ln</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-container">
+      <div class="section-eyebrow">&#x2753; H&auml;ufige Fragen</div>
+      <h2 class="section-title">Alles was Sie wissen m&uuml;ssen</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Muss ich eine App installieren?</span>
+            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">Nein. ADAM funktioniert &uuml;ber WhatsApp, Telegram oder Signal &mdash; Messenger die Sie bereits haben. Keine neue App, kein Login, kein Passwort.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Was passiert mit meinen Daten?</span>
+            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">Ihr ADAM l&auml;uft auf einem dedizierten Server in Deutschland &mdash; Ihre Daten geh&ouml;ren Ihnen. Kein Training auf Ihren Gesch&auml;ftsdaten, kein Weitergabe an Dritte, DSGVO-konform. Auftragsverarbeitungsvertrag inklusive.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Kann ADAM Fehler machen?</span>
+            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">Ja, wie jede KI. Deshalb: ADAM schickt Angebote und Rechnungen immer als Entwurf &mdash; Sie pr&uuml;fen und best&auml;tigen vor dem Versand. Bei kritischen Aufgaben gibt ADAM von sich aus einen Hinweis zur manuellen Kontrolle.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Wie schnell antwortet ADAM?</span>
+            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">In der Regel unter 10 Sekunden. Bei komplexen Aufgaben (z.B. vollst&auml;ndiges Angebot schreiben) bis zu 30 Sekunden. ADAM ist 24/7 verf&uuml;gbar &mdash; auch nachts, am Wochenende, an Feiertagen.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Was kostet die Einrichtung genau?</span>
+            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">3.500&euro; einmalig (Server in Deutschland, WhatsApp-Anbindung, individuelle Konfiguration, Schulung + 30 Tage Feintuning). Danach 650&euro;/Monat (Hosting, Wartung, Support, Updates). API-Kosten: 20&ndash;80&euro;/Monat nach Verbrauch &mdash; transparent auf Rechnung.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Welche Messenger werden unterst&uuml;tzt?</span>
+            <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">WhatsApp (empfohlen), Telegram und Signal. Zus&auml;tzlich Discord f&uuml;r Teams. Alle Messenger k&ouml;nnen gleichzeitig aktiv sein &mdash; ADAM antwortet &uuml;berall.</div>
+        </div>
+
       </div>
     </div>
   </section>

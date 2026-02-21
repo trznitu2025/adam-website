@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initSecurityCards();
   initParallax();
   initKidsSection();
+  initTestimonials();
+  initChatDemo();
+  calcROI();
   initContactForm();
   initAvailTimer();
   setTimeout(() => ScrollTrigger.refresh(), 500);
@@ -996,5 +999,65 @@ function initKidsSection() {
         scrollTrigger: { trigger: '.kids-subjects', start: 'top 90%', once: true }
       }
     );
+  });
+}
+
+/* =====================
+   FAQ TOGGLE
+   ===================== */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-a');
+  const isOpen = btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-q.open').forEach(b => {
+    b.classList.remove('open');
+    b.closest('.faq-item').querySelector('.faq-a').classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+
+/* =====================
+   ROI CALCULATOR
+   ===================== */
+function calcROI() {
+  const hours = parseInt(document.getElementById('roi-hours')?.value || 10);
+  const saved = Math.round(hours * 0.8);
+  const hourlyRate = 52; // avg �/Stunde
+  const yearlyValue = saved * 52 * hourlyRate;
+  const el_h = document.getElementById('roi-hours-val');
+  const el_s = document.getElementById('roi-saved');
+  const el_v = document.getElementById('roi-value');
+  if (el_h) el_h.textContent = hours + 'h';
+  if (el_s) el_s.textContent = saved + 'h/Woche';
+  if (el_v) el_v.textContent = yearlyValue.toLocaleString('de-DE') + ' �/Jahr';
+}
+
+/* =====================
+   CHAT DEMO ANIMATION
+   ===================== */
+function initChatDemo() {
+  const reply = `? Angebot erstellt!\n\nPos. 1 � GK-W�nde 3.OG: 280m� � 28,50� = 7.980�\nPos. 2 � Deckenabh�ngung: 280m� � 22� = 6.160�\n\n*Gesamt: 14.140 � netto*\n\nSoll ich als Entwurf in Lexoffice speichern?`;
+  const typingEl = document.getElementById('adam-typing');
+  if (!typingEl) return;
+  setTimeout(() => {
+    typingEl.innerHTML = reply.replace(/\n/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+    typingEl.style.fontSize = '0.72rem';
+  }, 3200);
+}
+
+/* TESTI ANIMATIONS */
+function initTestimonials() {
+  document.querySelectorAll('.testi-card').forEach((card, i) => {
+    if (typeof gsap !== 'undefined') {
+      gsap.fromTo(card,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.6, delay: i * 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: '#testimonials', start: 'top 80%', once: true } }
+      );
+    }
   });
 }
