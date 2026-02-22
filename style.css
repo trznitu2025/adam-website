@@ -2070,3 +2070,11 @@ section { position: relative; padding: 120px 24px; }
   .lang-proof-wrap { grid-template-columns: 1fr; }
   .lang-flags-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
 }
+
+/* ===== TWEMOJI FLAGS ===== */
+img.twemoji-flag {
+  height: 1.2em;
+  width: auto;
+  vertical-align: -0.2em;
+  display: inline-block;
+}

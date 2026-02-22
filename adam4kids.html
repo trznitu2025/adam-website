@@ -663,5 +663,16 @@
     });
   </script>
   <script src="translations.js"></script>
+  <script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      twemoji.parse(document.body, {
+        folder: 'svg',
+        ext: '.svg',
+        className: 'twemoji-flag',
+        base: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/'
+      });
+    });
+  </script>
 </body>
 </html>
