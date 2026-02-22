@@ -24,11 +24,11 @@
         <img src="assets/adam-logo-v1.png" alt="ADAM" style="height:60px;width:auto;filter:drop-shadow(0 0 14px #00f5ff) drop-shadow(0 0 28px rgba(0,245,255,0.4));transition:filter 0.3s;" onmouseover="this.style.filter='drop-shadow(0 0 20px #00f5ff) drop-shadow(0 0 40px rgba(0,245,255,0.6))'" onmouseout="this.style.filter='drop-shadow(0 0 14px #00f5ff) drop-shadow(0 0 28px rgba(0,245,255,0.4))'">
       </div>
       <ul class="nav-links">
-        <li><a href="#comparison">Vergleich</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#pricing">Preise</a></li>
-        <li><a href="#security">Sicherheit</a></li>
-        <li><a href="#contact" class="nav-cta magnetic-btn">Gespr&auml;ch buchen</a></li>
+        <li><a href="#comparison" data-i18n="nav.comparison">Vergleich</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#pricing" data-i18n="nav.pricing">Preise</a></li>
+        <li><a href="#security" data-i18n="nav.security">Sicherheit</a></li>
+        <li><a href="#contact" class="nav-cta magnetic-btn" data-i18n="nav.cta">Gespr&auml;ch buchen</a></li>
       </ul>
       <button class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -38,10 +38,10 @@
 
   <div id="mobile-menu">
     <ul>
-      <li><a href="#comparison">Vergleich</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#pricing">Preise</a></li>
-      <li><a href="#security">Sicherheit</a></li>
+      <li><a href="#comparison" data-i18n="nav.comparison">Vergleich</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#pricing" data-i18n="nav.pricing">Preise</a></li>
+      <li><a href="#security" data-i18n="nav.security">Sicherheit</a></li>
       <li><a href="#contact">Gespr&auml;ch buchen</a></li>
     </ul>
   </div>
@@ -101,11 +101,11 @@
       </div>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary magnetic-btn">
-          <span>Kostenloses Erstgespr&auml;ch</span>
+          <span data-i18n="cta.primary">Kostenloses Erstgespr&auml;ch</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="#skills" class="btn-ghost magnetic-btn">
-          <span>Skills entdecken</span>
+          <span data-i18n="cta.secondary">Skills entdecken</span>
         </a>
       </div>
     </div>
@@ -134,7 +134,7 @@
   <section id="comparison">
     <div class="section-container">
       <div class="comparison-label">&#x1F4A1; Die ehrliche Wahrheit</div>
-      <h2 class="section-title comparison-title">Warum noch ein Vollzeit-Sekretariat?</h2>
+      <h2 class="section-title comparison-title"><span data-i18n="section.comparison.title">Warum noch ein Vollzeit-Sekretariat?</span></h2>
       <div class="comparison-wrapper">
 
         <!-- LEFT: OLD -->
@@ -755,10 +755,10 @@
         <p>KI-Assistent der n&auml;chsten Generation</p>
       </div>
       <div class="footer-links">
-        <a href="#comparison">Vergleich</a>
-        <a href="#skills">Skills</a>
-        <a href="#pricing">Preise</a>
-        <a href="#security">Sicherheit</a>
+        <a href="#comparison" data-i18n="nav.comparison">Vergleich</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#pricing" data-i18n="nav.pricing">Preise</a>
+        <a href="#security" data-i18n="nav.security">Sicherheit</a>
         <a href="#contact">Kontakt</a>
       </div>
             <div class="footer-nav-legal">
@@ -803,6 +803,7 @@
   </a>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
+  <script src="translations.js"></script>
 </body>
 </html>
 
