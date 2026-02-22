@@ -321,7 +321,7 @@ const ADAM_TRANSLATIONS = {
   window.adamSetLang = applyLang;
 
   document.addEventListener('DOMContentLoaded', () => {
-    buildSwitcher();
+    // buildSwitcher(); // Nav-Switcher deaktiviert
     applyLang(currentLang);
   });
 
