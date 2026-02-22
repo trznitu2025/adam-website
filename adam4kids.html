@@ -240,6 +240,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      align-items: stretch;
       margin-top: 48px;
     }
     .how-card {
@@ -267,6 +268,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      align-items: stretch;
     }
     .feature-card {
       background: var(--glass);
@@ -417,6 +419,11 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     @media(max-width:768px){.hero-chips{display:none;}}
     img.emoji{height:1.2em!important;width:auto!important;vertical-align:-0.2em!important;display:inline!important;}
+
+/* Emoji size overrides for decorative icon containers */
+.kids-uc-icon img.emoji,.safety-icon img.emoji,.feat-icon img.emoji{height:2rem!important;width:auto!important;}
+.testi-stars img.emoji{height:1rem!important;width:auto!important;}
+.eyebrow img.emoji,.subj-tag img.emoji{height:1.1em!important;}
   </style>
 </head>
 <body>
@@ -456,10 +463,14 @@
       <p>Ihr Kind braucht Hilfe &mdash; und Sie k&ouml;nnen nicht immer helfen. ADAM erkl&auml;rt Hausaufgaben in Sekunden, auf WhatsApp, in allen F&auml;chern, auf Deutsch, Englisch oder Rum&auml;nisch. Sie schlafen ruhig. Ihr Kind lernt wirklich.</p>
       <div class="hero-btns">
         <a href="#contact" class="btn-primary">
-          &#x1F4E9; Jetzt kostenlos testen
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Jetzt kostenlos testen
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#features" class="btn-secondary">&#x25B6; Wie es funktioniert</a>
+        <a href="#features" class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><polygon points="5,3 19,12 5,21"/></svg>
+          Wie es funktioniert
+        </a>
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Verf&uuml;gbar</span></div>
