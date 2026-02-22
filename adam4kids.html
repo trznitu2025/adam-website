@@ -516,6 +516,84 @@
 @media(max-width: 480px) {
   .kids-usecases-grid { grid-template-columns: 1fr; }
 }
+
+/* Testimonials */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.testi-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.testi-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba(0,255,140,0.12);
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+.testi-card:hover {
+  border-color: rgba(0,255,140,0.2);
+  transform: translateY(-4px);
+}
+.testi-stars {
+  color: #f59e0b;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.testi-text {
+  font-size: 0.88rem;
+  color: rgba(232,234,240,0.8);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.testi-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,255,140,0.2), rgba(0,200,110,0.1));
+  border: 1px solid rgba(0,255,140,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #00ff8c;
+  flex-shrink: 0;
+}
+.testi-author strong {
+  display: block;
+  font-size: 0.85rem;
+  color: #fff;
+}
+.testi-author span {
+  font-size: 0.75rem;
+  color: rgba(232,234,240,0.45);
+}
+@media(max-width: 768px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
   </style>
 </head>
 <body>
@@ -882,7 +960,7 @@
       <div class="testimonials-grid">
 
         <div class="testi-card">
-          <div class="testi-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testi-text">&ldquo;Meine Tochter hatte 4 in Mathe. Nach 6 Wochen mit ADAM: Note 2. Sie erkl&auml;rt jetzt ihrem Bruder wie Gleichungen funktionieren.&rdquo;</p>
           <div class="testi-author">
             <div class="testi-avatar">S</div>
@@ -894,7 +972,7 @@
         </div>
 
         <div class="testi-card">
-          <div class="testi-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testi-text">&ldquo;Endlich erkl&auml;rt jemand die Hausaufgaben auf Rum&auml;nisch! Mein Sohn wechselt selbst zwischen Deutsch und Rum&auml;nisch &mdash; ADAM folgt einfach mit.&rdquo;</p>
           <div class="testi-author">
             <div class="testi-avatar">A</div>
@@ -906,7 +984,7 @@
         </div>
 
         <div class="testi-card">
-          <div class="testi-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testi-text">&ldquo;Was mich &uuml;berzeugt hat: ADAM gibt nie einfach die Antwort. Mein Kind denkt jetzt selbst mit. Das merkt man an den Pr&uuml;fungen.&rdquo;</p>
           <div class="testi-author">
             <div class="testi-avatar">T</div>
