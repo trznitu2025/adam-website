@@ -322,7 +322,9 @@ const ADAM_TRANSLATIONS = {
 
   document.addEventListener('DOMContentLoaded', () => {
     // buildSwitcher(); // Nav-Switcher deaktiviert
-    applyLang(currentLang);
+    // applyLang(currentLang); // Auto-Apply deaktiviert — HTML ist bereits auf Deutsch
+    // Sprache fest auf Deutsch setzen:
+    localStorage.setItem(STORAGE_KEY, 'de');
   });
 
   // Close dropdown on outside click
