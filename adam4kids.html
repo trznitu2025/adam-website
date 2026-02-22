@@ -594,6 +594,83 @@
 @media(max-width: 768px) {
   .testimonials-grid { grid-template-columns: 1fr; }
 }
+
+/* ====== PRICING FIXES ====== */
+.price-badge { font-size:0.72rem; font-weight:800; color:#000; background:linear-gradient(135deg,#00ff8c,#00c97a); padding:4px 14px; border-radius:100px; display:inline-block; margin-bottom:20px; text-transform:uppercase; letter-spacing:0.08em; }
+.price-badge-orange { background:linear-gradient(135deg,#f97316,#ea580c) !important; color:#fff !important; }
+.price-family { border-color:rgba(249,115,22,0.3) !important; background:linear-gradient(180deg,rgba(249,115,22,0.04),transparent) !important; }
+.price-card .btn-primary,.price-card .btn-secondary { display:flex; width:100%; justify-content:center; margin-top:8px; box-sizing:border-box; }
+
+/* ====== SAFETY GRID ====== */
+.safety-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  margin-top:48px;
+}
+.safety-card {
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:16px;
+  padding:28px 24px;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  transition:border-color 0.25s;
+}
+.safety-card:hover { border-color:rgba(0,255,140,0.2); }
+.safety-icon {
+  width:48px; height:48px; border-radius:12px;
+  background:rgba(0,255,140,0.08);
+  border:1px solid rgba(0,255,140,0.15);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; font-weight:800; color:#00ff8c;
+  flex-shrink:0; line-height:1;
+}
+.safety-icon-de { font-size:0.85rem !important; letter-spacing:1px; }
+.safety-icon img.emoji { height:1.1rem !important; }
+.safety-card h4 { font-size:0.9rem; font-weight:700; color:#fff; margin:0 0 6px; }
+.safety-card p { font-size:0.8rem; color:rgba(232,234,240,0.55); margin:0; line-height:1.6; }
+@media(max-width:600px){ .safety-grid { grid-template-columns:1fr; } }
+
+/* ====== FAQ ====== */
+.faq-list {
+  max-width:720px;
+  margin:48px auto 0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.faq-item {
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:14px;
+  overflow:hidden;
+  transition:border-color 0.25s;
+}
+.faq-item:has(.faq-q.open) { border-color:rgba(0,255,140,0.2); }
+.faq-q {
+  width:100%; background:transparent; border:none;
+  color:#fff; font-family:inherit; font-size:0.92rem; font-weight:600;
+  text-align:left; padding:20px 24px;
+  display:flex; justify-content:space-between; align-items:center;
+  cursor:pointer; gap:16px;
+  transition:color 0.2s;
+}
+.faq-q:hover { color:#00ff8c; }
+.faq-q.open { color:#00ff8c; }
+.faq-arrow {
+  font-size:0.6rem; color:rgba(255,255,255,0.35);
+  transition:transform 0.3s; flex-shrink:0;
+}
+.faq-q.open .faq-arrow { transform:rotate(180deg); color:#00ff8c; }
+.faq-a {
+  max-height:0; overflow:hidden;
+  transition:max-height 0.35s ease, padding 0.3s;
+  padding:0 24px;
+}
+.faq-a.open { max-height:300px; padding:0 24px 20px; }
+.faq-a p { font-size:0.85rem; color:rgba(232,234,240,0.6); line-height:1.7; margin:0; }
   </style>
 </head>
 <body>
@@ -1007,7 +1084,7 @@
       <p class="section-desc" style="margin:16px auto 48px;">Kein Vertrag. Kein verstecktes Klein&#173;gedrucktes. Nur Ergebnisse.</p>
       <div class="pricing-wrap">
         <div class="price-card featured">
-          <div class="price-badge">&#x2B50; Meistgew&auml;hlt</div>
+          <div class="price-badge">&#9733; Meistgew&auml;hlt</div>
           <div class="price-label">Monatlich</div>
           <div class="price-amount">49 <span>&euro;/Monat</span></div>
           <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;">Pro Kind &middot; jederzeit k&uuml;ndbar</p>
@@ -1033,9 +1110,9 @@
           <a href="#contact" class="btn-secondary" style="width:100%;justify-content:center;margin-top:28px;">Kostenlos testen</a>
         </div>
         <!-- Family plan -->
-        <div class="pricing-card" style="border-color:rgba(255,165,0,0.3);background:linear-gradient(180deg,rgba(255,165,0,0.05),rgba(255,100,0,0.03));">
-          <div class="pricing-badge" style="background:rgba(255,165,0,0.15);color:#ffa500;border-color:rgba(255,165,0,0.3);">&#x1F46A; Familie</div>
-          <div class="pricing-price"><span style="font-size:2.5rem;font-weight:900;color:#ffa500;">79&euro;</span><span style="font-size:0.85rem;color:rgba(232,234,240,0.5);">/Monat</span></div>
+        <div class="price-card price-family">
+          <div class="price-badge price-badge-orange">Familie</div>
+          <div class="price-amount" style="color:#f97316;">79 <span>&euro;/Monat</span></div>
           <p style="font-size:0.78rem;color:rgba(232,234,240,0.5);margin-bottom:20px;">F&uuml;r 2 Kinder &bull; jederzeit k&uuml;ndbar</p>
           <ul class="pricing-features">
             <li>&#x2713; Alles aus &ldquo;Monatlich&rdquo;</li>
@@ -1084,22 +1161,22 @@
       <p style="color:rgba(232,234,240,0.55);font-size:0.95rem;max-width:560px;margin:12px auto 48px;text-align:center;line-height:1.7;">Wir wissen: Bei Kindern ist Vertrauen keine Selbstverst&auml;ndlichkeit. Hier ist was wir konkret tun.</p>
       <div class="safety-grid">
         <div class="safety-card">
-          <div class="safety-icon">&#x1F1E9;&#x1F1EA;</div>
+          <div class="safety-icon safety-icon-de">DE</div>
           <h4>Server in Deutschland</h4>
           <p>Alle Daten bleiben in Deutschland. Kein US-Cloud-Anbieter. DSGVO-konform nach deutschem Recht.</p>
         </div>
         <div class="safety-card">
-          <div class="safety-icon">&#x1F6AB;</div>
+          <div class="safety-icon si-no">&#x2715;</div>
           <h4>Kein KI-Training</h4>
           <p>Die Konversationen Ihres Kindes werden <strong>nicht</strong> f&uuml;r das Training von KI-Modellen verwendet. Niemals.</p>
         </div>
         <div class="safety-card">
-          <div class="safety-icon">&#x1F441;&#xFE0F;</div>
+          <div class="safety-icon si-eye">&#9673;</div>
           <h4>Eltern sehen alles</h4>
           <p>Der t&auml;gliche Bericht zeigt jede Interaktion. Eltern haben vollst&auml;ndige Transparenz &mdash; immer.</p>
         </div>
         <div class="safety-card">
-          <div class="safety-icon">&#x1F5D1;&#xFE0F;</div>
+          <div class="safety-icon si-del">&#x232B;</div>
           <h4>L&ouml;schanfrage jederzeit</h4>
           <p>Alle Daten werden auf Anfrage sofort und vollst&auml;ndig gel&ouml;scht. Kein Kleingedrucktes.</p>
         </div>
