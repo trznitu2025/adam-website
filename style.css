@@ -2301,3 +2301,6 @@ img.twemoji-flag {
 @media (max-width: 600px) {
   .integ-categories { grid-template-columns: 1fr; }
 }
+
+/* Twemoji global size fix */
+img.emoji{height:1.2em!important;width:auto!important;vertical-align:-0.2em!important;display:inline!important;}
