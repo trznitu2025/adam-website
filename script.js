@@ -700,39 +700,83 @@ function initSkillCards() {
    12. HOW STEPS
    ===================== */
 function initHowSteps() {
-  // New step cards
   const stepCards = document.querySelectorAll('.step-card');
+  const connectors = document.querySelectorAll('.step-connector');
   const fill = document.getElementById('steps-fill');
 
-  stepCards.forEach((card, i) => {
-    gsap.fromTo(card,
-      { opacity: 0, y: 50, scale: 0.92 },
-      {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.6,
-        delay: i * 0.15,
-        ease: 'back.out(1.5)',
-        scrollTrigger: { trigger: '#how', start: 'top 80%' },
-        onStart: () => card.classList.add('visible'),
-      }
-    );
-  });
-
-  // Animate progress line
+  // Progress line: animated fill with traveling dot
   if (fill) {
     ScrollTrigger.create({
       trigger: '#how',
       start: 'top 75%',
       once: true,
       onEnter: () => {
-        gsap.to(fill, { width: '100%', duration: 2, ease: 'power2.inOut', delay: 0.3 });
+        gsap.fromTo(fill,
+          { width: '0%' },
+          { width: '100%', duration: 2.5, ease: 'power2.inOut', delay: 0.2 }
+        );
       }
     });
   }
 
-  // Legacy step-items
-  const steps = document.querySelectorAll('.step-item');
-  steps.forEach((step, i) => {
+  // Step cards: staggered sequential entrance
+  stepCards.forEach((card, i) => {
+    const delay = 0.1 + i * 0.22;
+
+    gsap.fromTo(card,
+      { opacity: 0, y: 60, scale: 0.88, rotationX: 12 },
+      {
+        opacity: 1, y: 0, scale: 1, rotationX: 0,
+        duration: 0.7,
+        delay: delay,
+        ease: 'back.out(1.7)',
+        scrollTrigger: { trigger: '#how', start: 'top 78%', once: true },
+        onComplete: () => {
+          card.classList.add('visible');
+          // Activate the connector AFTER this card
+          if (connectors[i]) {
+            connectors[i].classList.add('active');
+            // Bounce connector dot
+            gsap.fromTo(connectors[i].querySelector('.connector-dot'),
+              { scale: 0 },
+              { scale: 1, duration: 0.4, ease: 'back.out(2)', delay: 0.1 }
+            );
+          }
+        }
+      }
+    );
+
+    // Icon wrap: scale up from center with slight bounce
+    gsap.fromTo(card.querySelector('.step-icon-wrap'),
+      { scale: 0.3, opacity: 0, rotation: -20 },
+      {
+        scale: 1, opacity: 1, rotation: 0,
+        duration: 0.55,
+        delay: delay + 0.05,
+        ease: 'back.out(2)',
+        scrollTrigger: { trigger: '#how', start: 'top 78%', once: true }
+      }
+    );
+  });
+
+  // Particle: glowing dot travels along the timeline
+  const track = document.querySelector('.steps-progress-line');
+  if (track) {
+    const particle = document.createElement('div');
+    particle.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:#00f5ff;box-shadow:0 0 16px rgba(0,245,255,0.9),0 0 32px rgba(0,245,255,0.4);z-index:5;opacity:0;left:0;';
+    track.appendChild(particle);
+    ScrollTrigger.create({
+      trigger: '#how', start: 'top 75%', once: true,
+      onEnter: () => {
+        gsap.to(particle, { opacity: 1, duration: 0.2, delay: 0.2 });
+        gsap.to(particle, { left: '100%', duration: 2.5, ease: 'power2.inOut', delay: 0.2,
+          onComplete: () => gsap.to(particle, { opacity: 0, duration: 0.3 }) });
+      }
+    });
+  }
+
+  // Legacy step-items fallback
+  document.querySelectorAll('.step-item').forEach((step, i) => {
     gsap.fromTo(step,
       { opacity: 0, y: 60 },
       { opacity: 1, y: 0, duration: 0.8, delay: i * 0.2, ease: 'power3.out',
