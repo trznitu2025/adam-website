@@ -59,7 +59,7 @@ img { max-width: 100%; display: block; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 0 24px;
+  padding: 0 40px;
   background: rgba(10,10,15,0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -118,7 +118,7 @@ img { max-width: 100%; display: block; }
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 100px;
-  padding: 6px 8px;
+  padding: 6px 10px 6px 8px;
 }
 .nav-links a {
   font-size: 0.85rem;
