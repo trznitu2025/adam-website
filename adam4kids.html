@@ -424,6 +424,38 @@
 .kids-uc-icon img.emoji,.safety-icon img.emoji,.feat-icon img.emoji{height:2rem!important;width:auto!important;}
 .testi-stars img.emoji{height:1rem!important;width:auto!important;}
 .eyebrow img.emoji,.subj-tag img.emoji{height:1.1em!important;}
+
+/* Kids Nav Links */
+.kids-nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 4px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50px;
+}
+.kids-nav-links li { margin: 0; padding: 0; }
+.kids-nav-links li a {
+  display: block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.kids-nav-links li a:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+@media(max-width: 600px) {
+  .kids-nav-links { display: none; }
+}
   </style>
 </head>
 <body>
